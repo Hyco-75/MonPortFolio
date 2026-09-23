@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  PORTFOLIO D'ELZO MENU                                           ║
+     ║                                                                  ║
+     ║  PLAN DU FICHIER :                                               ║
+     ║   1. <head>        → réglages, polices, STYLES (CSS)             ║
+     ║   2. <body>        → contenu visible                             ║
+     ║        A. Écran de chargement                                    ║
+     ║        B. Barre de progression                                   ║
+     ║        C. Menu de navigation                                     ║
+     ║        D. Section d'accueil (hero)                               ║
+     ║        E. Sections : À propos / Parcours / Outils /              ║
+     ║           Certifications / Projets / Contact                     ║
+     ║        F. Pied de page                                           ║
+     ║        G. Fiche projet détaillée (pop-up)                        ║
+     ║        H. Curseur personnalisé                                   ║
+     ║   3. <script>      → JavaScript (animations, filtres)            ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     1. HEAD : informations invisibles (titre d'onglet, polices, CSS)
+     ═══════════════════════════════════════════════════════════════════ -->
+<head>
+
+<!-- ─── Réglages de base de la page ─── -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ─── Titre affiché dans l'onglet du navigateur ─── -->
+<title>Elzo Menu, Etudiant en SIO SLAM souhaite devenir Game Designer & Level Designer</title>
+
+<!-- ─── Chargement des polices Google Fonts (Baloo 2, Nunito, Space Mono) ─── -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     STYLES (CSS) : tout ce qui concerne l'apparence du site
+     ═══════════════════════════════════════════════════════════════════ -->
+<style>
+
+  /* ─────────────────────────────────────────────
+     COULEURS ET VARIABLES GLOBALES
+     → Modifie les couleurs ici pour changer tout le site
+     ───────────────────────────────────────────── */
+  :root{
+    --bg: #16241c;                       /* fond principal */
+    --bg-deep: #101b15;                  /* fond très foncé (nav, boutons) */
+    --bg-panel: #ecdfb8;                 /* fond des cartes (beige) */
+    --bg-panel-hover: #f2e8c8;           /* fond des cartes au survol */
+    --ink: #23301f;                      /* couleur du texte sur les cartes */
+    --border: #4a6b4c;
+    --border-hover: #7fae6f;
+    --accent: #e0a839;                   /* jaune/or : couleur principale */
+    --accent-dark: #a9781f;
+    --accent-soft: rgba(224,168,57,0.16);
+    --sky: #5ba3c9;                      /* bleu */
+    --sky-soft: rgba(91,163,201,0.16);
+    --life: #c1503a;                     /* rouge */
+    --life-soft: rgba(193,80,58,0.16);
+    --leaf: #7fae6f;                     /* vert */
+    --leaf-soft: rgba(127,174,111,0.18);
+    --available: #7fae6f;
+    --text: #eef2e6;                     /* texte clair */
+    --text-muted: #b7c4ae;               /* texte grisé */
+    --text-dim: #7f9077;
+    --radius: 10px;                      /* arrondi des coins */
+    --pixel-shadow: 4px 4px 0 rgba(0,0,0,0.28);  /* ombre "pixel" */
+  }
+
+
+  /* ─────────────────────────────────────────────
+     RÉGLAGES GÉNÉRAUX DE LA PAGE
+     ───────────────────────────────────────────── */
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }   /* défilement doux quand on clique sur le menu */
+
+  body{
+    margin:0;
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(127,174,111,0.08), transparent 40%),
+      radial-gradient(circle at 85% 30%, rgba(91,163,201,0.06), transparent 45%),
+      radial-gradient(rgba(255,255,255,0.05) 1.3px, transparent 1.3px);
+    background-size: auto, auto, 26px 26px;
+    color: var(--text);
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  h1,h2,h3{ font-family:'Baloo 2',sans-serif; margin:0; letter-spacing:0; }
+  .mono{ font-family:'Space Mono',monospace; }
+  a{ color:inherit; }
+  .wrap{ max-width: 1000px; margin:0 auto; padding: 0 28px; }   /* conteneur centré */
+
+  /* Si l'utilisateur a désactivé les animations dans son système, on les coupe */
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation:none !important; transition:none !important; }
+  }
+
+
+  /* ─────────────────────────────────────────────
+     BARRE DE PROGRESSION (en haut de l'écran)
+     ───────────────────────────────────────────── */
+  #progress-track{
+    position:fixed; top:0; left:0; right:0; height:8px; z-index:90;
+    background: var(--bg-deep); border-bottom:2px solid var(--bg-deep);
+  }
+  #progress{
+    height:100%; width:0%;
+    background: repeating-linear-gradient(90deg, var(--accent) 0 14px, var(--accent-dark) 14px 16px);
+    box-shadow: 0 0 10px rgba(224,168,57,0.55);
+    transition: width .08s linear;
+  }
+
+
+  /* ─────────────────────────────────────────────
+     ÉCRAN DE CHARGEMENT (petits blocs colorés au démarrage)
+     ───────────────────────────────────────────── */
+  #boot{
+    position:fixed; inset:0; z-index:200; background:var(--bg-deep);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .boot-blocks{ display:grid; grid-template-columns:repeat(3,26px); grid-gap:6px; }
+  .boot-blocks span{
+    width:26px; height:26px; border-radius:4px; transform:scale(0);
+    animation: popIn .3s cubic-bezier(.4,1.8,.5,1) forwards;
+    box-shadow: inset 0 -4px 0 rgba(0,0,0,0.25);
+  }
+  .boot-blocks span:nth-child(3n+1){ background:var(--accent); }
+  .boot-blocks span:nth-child(3n+2){ background:var(--sky); }
+  .boot-blocks span:nth-child(3n){ background:var(--leaf); }
+  /* Délai d'apparition de chaque bloc (effet en cascade) */
+  .boot-blocks span:nth-child(1){ animation-delay:0s; }
+  .boot-blocks span:nth-child(2){ animation-delay:.06s; }
+  .boot-blocks span:nth-child(3){ animation-delay:.12s; }
+  .boot-blocks span:nth-child(4){ animation-delay:.18s; }
+  .boot-blocks span:nth-child(5){ animation-delay:.24s; }
+  .boot-blocks span:nth-child(6){ animation-delay:.3s; }
+  .boot-blocks span:nth-child(7){ animation-delay:.36s; }
+  .boot-blocks span:nth-child(8){ animation-delay:.42s; }
+  .boot-blocks span:nth-child(9){ animation-delay:.48s; }
+  @keyframes popIn{ 60%{ transform:scale(1.15); } to{ transform:scale(1); } }
+  #boot.collapse{ animation: bootOut .45s ease forwards; animation-delay:.95s; }
+  @keyframes bootOut{ to{ opacity:0; transform:scale(1.15); } }
+  #boot.hidden{ display:none; }
+
+
+  /* ─────────────────────────────────────────────
+     MENU DE NAVIGATION (barre collée en haut)
+     ───────────────────────────────────────────── */
+  nav{
+    position: sticky; top:8px; z-index:50;
+    background: var(--bg-deep);
+    border-bottom: 3px solid var(--accent-dark);
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+  }
+  nav::after{
+    content:""; display:block; height:5px;
+    background-image: linear-gradient(90deg, var(--leaf) 0 3px, transparent 3px 6px);
+    background-size: 12px 5px; opacity:.6;
+  }
+  .nav-inner{ max-width:1000px; margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; }
+
+  /* Logo (carré "EM" + nom) */
+  .logo{ display:flex; align-items:center; gap:11px; text-decoration:none; }
+  .logo-mark{
+    width:34px; height:34px; background:var(--accent); border-radius:7px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:13px; color: var(--bg-deep);
+    box-shadow: var(--pixel-shadow);
+    border: 2px solid var(--accent-dark);
+  }
+  .logo-name{ font-family:'Baloo 2',sans-serif; font-weight:600; font-size:16px; color:var(--text); }
+
+  /* Liens du menu */
+  .nav-links{ display:flex; gap:6px; list-style:none; margin:0; padding:0; font-size:14px; color:var(--text-muted); }
+  .nav-links > li > a{
+    text-decoration:none; padding: 7px 13px; border-radius:7px; font-weight:600;
+    transition: background .15s ease, color .15s ease, transform .1s ease;
+  }
+  .nav-links > li > a:hover, .nav-links > li > a:focus-visible{ color:var(--accent); background: rgba(224,168,57,0.1); transform: translateY(-1px); }
+  @media (max-width:760px){ .nav-links{ display:none; } }   /* menu caché sur mobile */
+
+  /* Sous-menu déroulant (Projets) */
+  .has-sub{ position:relative; }
+  .sub-links{
+    list-style:none; margin:0; padding:8px; position:absolute; top:38px; left:-6px;
+    background: var(--bg-panel); border:2px solid var(--ink); border-radius:9px;
+    min-width:210px; box-shadow: var(--pixel-shadow);
+    opacity:0; visibility:hidden; transform: translateY(-4px) scale(.98);
+    transition: opacity .15s ease, transform .15s ease, visibility .15s;
+  }
+  .has-sub:hover .sub-links, .has-sub:focus-within .sub-links{ opacity:1; visibility:visible; transform:translateY(0) scale(1); }
+  .sub-links li a{ display:block; padding:9px 12px; font-size:13.5px; border-radius:6px; text-decoration:none; color:var(--ink); font-weight:600; }
+  .sub-links li a:hover{ background: var(--accent-soft); color: var(--accent-dark); }
+
+
+  /* ─────────────────────────────────────────────
+     SECTION D'ACCUEIL (HERO) : titre, photo, décor
+     ───────────────────────────────────────────── */
+  header.hero{
+    padding: 100px 0 118px;
+    border-bottom: 4px solid var(--accent-dark);
+    position:relative; overflow:hidden;
+    background:
+      radial-gradient(2px 2px at 8% 12%, rgba(255,255,255,.5), transparent),
+      radial-gradient(2px 2px at 22% 22%, rgba(255,255,255,.35), transparent),
+      radial-gradient(1.5px 1.5px at 38% 9%, rgba(255,255,255,.45), transparent),
+      radial-gradient(1.5px 1.5px at 62% 16%, rgba(255,255,255,.3), transparent),
+      radial-gradient(2px 2px at 78% 8%, rgba(255,255,255,.4), transparent),
+      radial-gradient(1.5px 1.5px at 92% 20%, rgba(255,255,255,.35), transparent),
+      linear-gradient(180deg, #16241c 0%, #16241c 55%, #1b2d21 100%);
+  }
+
+  /* Décor : montagnes + herbe (SVG en bas du hero) */
+  .hero-scenery{ position:absolute; left:0; right:0; bottom:0; height:190px; z-index:0; pointer-events:none; }
+  .hero-scenery svg{ width:100%; height:100%; display:block; }
+
+  /* Décor : petits blocs colorés qui flottent */
+  .hero-blocks{ position:absolute; inset:0; z-index:0; pointer-events:none; }
+  .hero-blocks span{
+    position:absolute; display:block; border-radius:6px; border:2px solid rgba(0,0,0,0.25);
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.22);
+    animation: floatBlock 5s ease-in-out infinite;
+  }
+  .hb1{ top:14%; left:6%; width:30px; height:30px; background:var(--accent); animation-delay:0s; transform:rotate(-6deg); }
+  .hb2{ top:30%; left:88%; width:22px; height:22px; background:var(--leaf); animation-delay:.6s; transform:rotate(10deg); }
+  .hb3{ top:8%; left:78%; width:18px; height:18px; background:var(--sky); animation-delay:1.2s; transform:rotate(-4deg); }
+  .hb4{ top:52%; left:3%; width:16px; height:16px; background:var(--life); animation-delay:1.8s; transform:rotate(8deg); opacity:.85; }
+  @keyframes floatBlock{ 0%,100%{ transform:translateY(0) rotate(var(--r,0)); } 50%{ transform:translateY(-14px) rotate(var(--r,0)); } }
+
+  /* Décor : soleil */
+  .hero-sun{
+    position:absolute; top:36px; right:9%; width:64px; height:64px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #ffe9b0, var(--accent) 70%);
+    border:3px solid var(--accent-dark); box-shadow: 0 0 0 8px rgba(224,168,57,0.08), 0 0 40px rgba(224,168,57,0.25);
+    z-index:0; animation: sunDrift 7s ease-in-out infinite;
+  }
+  @keyframes sunDrift{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-8px); } }
+
+  /* Disposition : texte à gauche, photo à droite */
+  .hero-grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap:56px; align-items:center; position:relative; z-index:1; }
+  @media (max-width:820px){ .hero-grid{ grid-template-columns:1fr; gap:40px; } }
+
+  /* Étiquette "Etudiant SIO SLAM" */
+  .eyebrow{
+    display:inline-block; color:var(--bg-deep); background:var(--sky); font-size:12.5px; font-weight:700;
+    padding: 5px 12px; border-radius:6px; margin-bottom:18px; border:2px solid #3d7a9c;
+  }
+
+  /* Sous-titre : formation actuelle en clair, sous l'étiquette */
+  .training-sub{
+    display:block; font-size:12.5px; color:var(--text-muted); margin:-10px 0 18px; letter-spacing:.02em;
+  }
+
+  /* Badge "Ouvert aux stages" avec point clignotant */
+  .status-badge{
+    display:inline-flex; align-items:center; gap:9px; font-size:12.5px; color:var(--text);
+    background: var(--bg-deep); border:2px solid var(--leaf); border-radius:20px; padding:7px 14px 7px 12px; margin-bottom:24px;
+    font-weight:600;
+  }
+  .status-dot{ width:9px; height:9px; border-radius:50%; background:var(--available); flex-shrink:0; box-shadow: 0 0 8px var(--available); animation: pulse 1.8s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.45; } }
+
+  /* Titre principal et texte de présentation */
+  h1.title{ font-size: clamp(2.1rem, 4.4vw, 3.2rem); font-weight:700; line-height:1.14; color:var(--text); text-shadow: 3px 3px 0 rgba(0,0,0,0.25); }
+  .hero p.pitch{ margin-top:20px; max-width:52ch; color:var(--text-muted); font-size:17px; }
+  .hero-cta{ margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; }
+
+  /* Boutons (Voir mes projets / Me contacter / CV) */
+  .btn{
+    font-family:'Baloo 2',sans-serif; font-weight:600; font-size:15px;
+    padding:13px 24px; border-radius:9px; text-decoration:none;
+    cursor:pointer; display:inline-block; transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn-primary{
+    background:var(--accent); color:var(--bg-deep); border:2px solid var(--accent-dark);
+    box-shadow: var(--pixel-shadow);
+  }
+  .btn-primary:hover{ transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.28); }
+  .btn-primary:active{ transform: translate(1px,1px); box-shadow: 2px 2px 0 rgba(0,0,0,0.28); }
+  .btn-ghost{
+    border:2px solid var(--leaf); color:var(--text); background: rgba(127,174,111,0.08);
+    box-shadow: var(--pixel-shadow);
+  }
+  .btn-ghost:hover{ transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.2); border-color:var(--accent); color:var(--accent); }
+  .btn-ghost:active{ transform: translate(1px,1px); box-shadow: 2px 2px 0 rgba(0,0,0,0.2); }
+
+  /* Cadre photo */
+  .photo-wrap{ position:relative; }
+  .photo-wrap::before{
+    content:""; position:absolute; inset: 14px -14px -14px 14px;
+    border: 3px solid var(--accent-dark); border-radius: var(--radius); z-index:0;
+  }
+  .photo-frame{
+    position:relative; z-index:1; aspect-ratio: 4/5; border-radius: var(--radius);
+    overflow:hidden; background: var(--bg-panel); border:3px solid var(--ink);
+    box-shadow: var(--pixel-shadow);
+  }
+  .photo-frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .photo-fallback{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+    height:100%; padding:16px; text-align:center; color:var(--ink); opacity:.6;
+  }
+  .photo-fallback svg{ width:40px; height:40px; opacity:.6; }
+  .photo-fallback span{ font-size:11.5px; line-height:1.5; }
+
+  /* Animations d'apparition du hero (chaque élément arrive l'un après l'autre) */
+  .hero-copy > *{ opacity:0; transform: translateY(14px); animation: rise .6s ease forwards; }
+  .hero-copy .eyebrow{ animation-delay:.05s; }
+  .hero-copy .training-sub{ animation-delay:.1s; }
+  .hero-copy .status-badge{ animation-delay:.15s; }
+  .hero-copy .title{ animation-delay:.25s; }
+  .hero-copy .pitch{ animation-delay:.35s; }
+  .hero-copy .hero-cta{ animation-delay:.45s; }
+  .hero-photo{ opacity:0; transform: scale(.94) rotate(-1.5deg); animation: fadeScale .7s cubic-bezier(.3,1.4,.5,1) forwards; animation-delay:.3s; }
+  @keyframes rise{ to{ opacity:1; transform: translateY(0); } }
+  @keyframes fadeScale{ to{ opacity:1; transform: scale(1) rotate(0); } }
+
+
+  /* ─────────────────────────────────────────────
+     STYLE COMMUN À TOUTES LES SECTIONS
+     (fond, séparateur en dents de scie, couleur par zone)
+     ───────────────────────────────────────────── */
+  section{ padding: 96px 0 108px; position:relative; }
+  section::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:14px;
+    background-image: linear-gradient(135deg, var(--zone-line, var(--border)) 25%, transparent 25%), linear-gradient(225deg, var(--zone-line, var(--border)) 25%, transparent 25%);
+    background-size: 20px 14px; background-position: 0 0; opacity:.55;
+  }
+  section:last-of-type::after{ display:none; }
+
+  /* Couleur d'ambiance propre à chaque section */
+  #apropos{ background: linear-gradient(180deg, #16241c 0%, #17281f 100%); }
+  #apropos{ --zone-line: var(--sky); background-color:#17281f; background-image: radial-gradient(ellipse 620px 320px at 88% 0%, var(--sky-soft), transparent 62%); }
+  #parcours{ --zone-line: var(--leaf); background-color:#182a1f; background-image: radial-gradient(ellipse 620px 320px at 12% 0%, var(--leaf-soft), transparent 62%); }
+  #competences{ --zone-line: var(--accent); background-color:#1c2a1a; background-image: radial-gradient(ellipse 620px 320px at 88% 0%, var(--accent-soft), transparent 62%); }
+  #certifications{ --zone-line: var(--sky); background-color:#152722; background-image: radial-gradient(ellipse 620px 320px at 12% 0%, var(--sky-soft), transparent 62%); }
+  #projets{ --zone-line: var(--leaf); background-color:#17281f; background-image: radial-gradient(ellipse 620px 320px at 88% 0%, var(--leaf-soft), transparent 62%); }
+  #contact{ --zone-line: var(--life); background-color:#221c17; background-image: radial-gradient(ellipse 620px 320px at 12% 0%, var(--life-soft), transparent 62%); }
+
+  /* En-tête de chaque section (icône + petit texte + titre) */
+  .section-head{ margin-bottom:42px; display:flex; align-items:center; gap:14px; }
+  .section-head .level-flag{
+    width:38px; height:38px; flex-shrink:0; border-radius:8px; background: var(--zone, var(--accent));
+    border:2px solid var(--ink); box-shadow: var(--pixel-shadow);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .section-head .level-flag svg{ width:20px; height:20px; }
+  .section-head .eyebrow-txt{ font-size:13px; font-weight:700; color: var(--zone, var(--accent)); }
+  .section-head h2{ font-size:28px; font-weight:700; color:var(--text); }
+
+  /* Effet d'apparition au défilement (activé par le JavaScript) */
+  .reveal{ opacity:0; transform: translateY(18px) scale(.985); transition: opacity .5s ease, transform .5s cubic-bezier(.3,1.2,.4,1); }
+  .reveal.in{ opacity:1; transform: translateY(0) scale(1); }
+
+  /* Style des cartes beiges (réutilisé partout) */
+  .card{
+    background:var(--bg-panel); color:var(--ink); border:3px solid var(--ink); border-radius: var(--radius);
+    box-shadow: var(--pixel-shadow);
+    transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+  }
+  .card:hover{ background:var(--bg-panel-hover); transform: translate(-3px,-3px); box-shadow: 8px 8px 0 rgba(0,0,0,0.3); }
+
+
+  /* ─────────────────────────────────────────────
+     SECTION À PROPOS : bio + barres de niveau
+     ───────────────────────────────────────────── */
+  .sheet{ display:grid; grid-template-columns: 1fr .85fr; gap:28px; }
+  @media (max-width:760px){ .sheet{ grid-template-columns:1fr; } }
+
+  /* Carte de gauche : texte */
+  .sheet-bio{ padding:32px; }
+  .sheet-bio p{ color:var(--ink); margin:0 0 14px; opacity:.85; }
+  .sheet-bio p:last-child{ margin-bottom:0; }
+  .sheet-bio strong{ color:var(--ink); font-weight:800; opacity:1; }
+
+  /* Carte de droite : barres de compétences */
+  .sheet-skills{ padding:32px; }
+  .skill-row{ margin-bottom:20px; }
+  .skill-row:last-child{ margin-bottom:0; }
+  .skill-top{ display:flex; justify-content:space-between; font-size:14px; color:var(--ink); margin-bottom:8px; font-weight:700; }
+  .skill-track{ height:12px; border-radius:6px; background: rgba(35,48,31,0.18); overflow:hidden; border:2px solid var(--ink); }
+  .skill-fill{
+    height:100%; border-radius:4px; background:var(--accent); transform: scaleX(0); transform-origin:left;
+    transition: transform .9s cubic-bezier(.2,.9,.3,1);
+    background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.25) 0 6px, transparent 6px 12px);
+  }
+  .reveal.in .skill-fill{ transform: scaleX(1); }   /* la barre se remplit à l'apparition */
+
+
+  /* Encadré "recherche de stage" dans À propos */
+  .stage-callout{
+    margin-top:22px; padding:14px 16px; background:var(--accent-soft); border:2px dashed var(--accent-dark);
+    border-radius:8px; display:flex; flex-direction:column; gap:4px;
+  }
+  .stage-callout strong{ font-size:14.5px; color:var(--ink); }
+  .stage-callout span{ font-size:13px; color:var(--ink); opacity:.75; }
+
+  /* ─────────────────────────────────────────────
+     SECTION PARCOURS : frise chronologique
+     ───────────────────────────────────────────── */
+  .timeline{ position:relative; padding-left:38px; }
+  .timeline::before{   /* la ligne pointillée verticale */
+    content:""; position:absolute; left:8px; top:6px; bottom:6px; width:4px;
+    background: repeating-linear-gradient(180deg, var(--leaf) 0 10px, transparent 10px 16px);
+    border-radius:2px;
+  }
+  .tstep{ position:relative; padding-bottom:34px; }
+  .tstep:last-child{ padding-bottom:0; }
+  .tstep::before{      /* le rond de chaque étape */
+    content:""; position:absolute; left:-38px; top:2px; width:20px; height:20px; border-radius:50%;
+    background: var(--accent); border:3px solid var(--ink); box-shadow: 3px 3px 0 rgba(0,0,0,0.25);
+  }
+  .tstep.future::before{ background: var(--bg-panel); }   /* étapes à venir = rond vide */
+
+  /* Étape "en cours" : le rond se remplit comme un camembert selon --progress (0 à 1) */
+  .tstep.in-progress::before{
+    background: conic-gradient(var(--accent) calc(var(--progress, 0) * 360deg), var(--bg-panel) 0deg);
+  }
+  .when-progress-label{ font-weight:400; opacity:.85; margin-left:4px; }
+  .progress-track{
+    margin-top:14px; height:8px; width:100%; max-width:320px; border-radius:5px;
+    background: var(--bg-deep); border:1px solid var(--border); overflow:hidden;
+  }
+  .progress-fill{
+    height:100%; width:0%; border-radius:5px;
+    background: repeating-linear-gradient(90deg, var(--accent) 0 10px, var(--accent-dark) 10px 12px);
+    transition: width 1s ease;
+  }
+
+  .tstep .when{
+    display:inline-block; font-size:12px; color:var(--bg-deep); font-weight:700; letter-spacing:.02em;
+    background: var(--leaf); padding:3px 10px; border-radius:5px;
+  }
+  .tstep h3{ font-size:17px; margin:8px 0 6px; color:var(--text); }
+  .tstep p{ color:var(--text-muted); margin:0; max-width:56ch; }
+
+  /* Encart administratif "cadre officiel du BTS" — sobre, à part du reste */
+  .bts-info-box{
+    margin-top:36px; padding:20px 24px; border-radius:8px;
+    background: rgba(0,0,0,0.15); border:1px dashed var(--border);
+  }
+  .bts-info-head{ font-size:13px; font-weight:700; color:var(--text-muted); letter-spacing:.02em; margin-bottom:10px; }
+  .bts-info-box p{ font-size:13.5px; color:var(--text-muted); margin:0 0 10px; max-width:70ch; }
+  .bts-info-box strong{ color:var(--text); }
+  .bts-info-box ul{ margin:0; padding-left:20px; font-size:13px; color:var(--text-muted); line-height:1.8; }
+
+
+  /* ─────────────────────────────────────────────
+     SECTION OUTILS : grille de cartes
+     ───────────────────────────────────────────── */
+  .grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  @media (max-width:680px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
+  .tool{ padding:22px 16px; text-align:center; }
+  .tool .name{ font-family:'Baloo 2',sans-serif; font-weight:700; font-size:15px; }
+  .tool .role{ font-size:12px; color:var(--ink); opacity:.7; margin-top:5px; }
+
+
+  /* ─────────────────────────────────────────────
+     SECTION CERTIFICATIONS : liste de badges
+     ───────────────────────────────────────────── */
+  .certif{ padding:20px 22px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+  .certif .name{ font-family:'Baloo 2',sans-serif; font-weight:700; font-size:15.5px; }
+  .certif .issuer{ font-size:13px; color:var(--ink); opacity:.65; margin-top:3px; }
+  .certif-status{ font-size:12px; font-weight:700; padding:6px 13px; border-radius:14px; white-space:nowrap; border:2px solid; }
+  .certif-status.ok{ color:#2f5233; background: var(--leaf-soft); border-color: var(--leaf); }          /* "Obtenue" */
+  .certif-status.pending{ color:var(--accent-dark); background: var(--accent-soft); border-color: var(--accent); }   /* "Objectif" */
+  .certif-list{ display:flex; flex-direction:column; gap:14px; }
+
+
+  /* ─────────────────────────────────────────────
+     SECTION PROJETS : filtres + cartes de projet
+     ───────────────────────────────────────────── */
+
+  /* Boutons de filtre (Tous / Scolaires / Pro / Perso) */
+  .filters{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px; }
+  .filter-btn{
+    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:13.5px;
+    background:var(--bg-deep); color:var(--text-muted); border:2px solid var(--border);
+    border-radius:20px; padding:9px 18px; cursor:pointer; transition: all .15s ease;
+  }
+  .filter-btn:hover{ border-color:var(--leaf); color:var(--text); }
+  .filter-btn.active{ background:var(--accent); border-color:var(--accent-dark); color:var(--bg-deep); }
+
+  /* Cartes de projet */
+  .projects{ display:flex; flex-direction:column; gap:20px; }
+  .project.hide{ display:none; }   /* utilisé par le filtre pour cacher un projet */
+  .project{ padding:28px; position:relative; overflow:hidden; }
+  .project::before{    /* petit cercle décoratif dans le coin */
+    content:""; position:absolute; top:-26px; right:-26px; width:70px; height:70px;
+    border-radius:50%; opacity:.16; background: var(--seal, var(--leaf));
+  }
+  /* Couleur du cercle selon la catégorie */
+  .project[data-cat="scolaire"]{ --seal: var(--sky); }
+  .project[data-cat="pro"]{ --seal: var(--accent); }
+  .project[data-cat="perso"]{ --seal: var(--life); }
+  .project-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; }
+  .project h3{ font-size:21px; margin-bottom:6px; color:var(--ink); }
+  .project .engine{ font-size:13px; color:var(--ink); opacity:.6; font-weight:600; }
+  .project .cat-tag{ font-size:12px; font-weight:700; border:2px solid; padding:5px 12px; border-radius:14px; white-space:nowrap; }
+  .cat-tag.scolaire{ color:#2c5c78; border-color: var(--sky); background: var(--sky-soft); }
+  .cat-tag.pro{ color:var(--accent-dark); border-color: var(--accent); background: var(--accent-soft); }
+  .cat-tag.perso{ color:#2f5233; border-color: var(--leaf); background: var(--leaf-soft); }
+  .project p.desc{ color:var(--ink); opacity:.8; margin:16px 0 18px; max-width:64ch; }
+
+  /* Bouton "Voir le projet" présent sur chaque carte de projet */
+  .project-link{
+    display:inline-block; margin-top:20px;
+    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:14px; text-decoration:none;
+    background:var(--accent); color:var(--bg-deep); border:2px solid var(--accent-dark);
+    padding:9px 18px; border-radius:9px; box-shadow: var(--pixel-shadow);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .project-link:hover{ transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.28); }
+  .project-link:active{ transform: translate(1px,1px); box-shadow: 2px 2px 0 rgba(0,0,0,0.28); }
+  .project-link.disabled{ opacity:.55; cursor:not-allowed; background:#cfc39b; border-color:var(--ink); box-shadow:none; }
+  .project-link.disabled:hover{ transform:none; box-shadow:none; }
+
+  /* Rangée de boutons (quand un projet a plusieurs liens) */
+  .project-links{ display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; }
+  .project-links .project-link{ margin-top:0; }
+  /* Bouton secondaire (2e lien d'un projet) : contour au lieu de plein */
+  .project-link.secondary{ background:transparent; color:var(--ink); border-color:var(--ink); }
+  .project-link.secondary:hover{ background: var(--accent-soft); }
+
+  /* Les cartes de projet sont cliquables (ouvrent la pop-up) */
+  .project{ cursor:pointer; }
+  .project .click-hint{ display:block; margin-top:14px; font-size:12px; font-weight:700; color:var(--ink); opacity:.5; }
+
+  /* Cadre "Rien ici pour l'instant" : affiché quand une catégorie est vide */
+  .empty-state{
+    display:none; text-align:center; padding:46px 28px;
+    border:3px dashed var(--border); border-radius:var(--radius);
+    background: rgba(0,0,0,0.18); color:var(--text-muted);
+  }
+  .empty-state.show{ display:block; animation: rise .4s ease; }
+  .empty-state .empty-icon{
+    width:52px; height:52px; margin:0 auto 14px; border-radius:10px;
+    background:var(--bg-deep); border:2px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .empty-state .empty-icon svg{ width:26px; height:26px; }
+  .empty-state h3{ font-size:20px; color:var(--text); margin-bottom:6px; }
+  .empty-state p{ margin:0 auto; max-width:44ch; font-size:14.5px; }
+
+  /* Petites étiquettes (technologies utilisées) */
+  .pills{ display:flex; gap:8px; flex-wrap:wrap; }
+  .pill{ font-size:12.5px; font-weight:700; padding:5px 12px; border:2px solid var(--border); border-radius:14px; color:var(--ink); background: rgba(255,255,255,0.3); }
+
+
+  /* ─────────────────────────────────────────────
+     SECTION CONTACT
+     ───────────────────────────────────────────── */
+  .contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:24px; align-items:stretch; }
+  @media (max-width:760px){ .contact-grid{ grid-template-columns:1fr; } }
+
+  .contact-panel{ padding:46px; display:flex; flex-direction:column; justify-content:center; gap:24px; }
+  .contact-panel h2{ font-size:26px; max-width:16ch; color:var(--ink); }
+  .contact-links{ display:flex; flex-direction:column; gap:12px; font-size:14.5px; }
+  .contact-links a{ text-decoration:none; color:var(--ink); font-weight:700; transition: color .15s ease, transform .15s ease; display:inline-block; }
+  .contact-links a:hover{ color:var(--life); transform: translateX(3px); }
+  .contact-line{ display:flex; align-items:center; gap:9px; color:var(--ink); font-weight:700; }
+  .contact-line svg{ width:17px; height:17px; flex-shrink:0; opacity:.75; }
+
+  /* Formulaire de contact */
+  .contact-form-panel{ padding:40px; }
+  .contact-form-panel h3{ font-size:19px; color:var(--ink); margin-bottom:18px; }
+  .contact-form{ display:flex; flex-direction:column; gap:14px; }
+  .contact-form label{ display:flex; flex-direction:column; gap:6px; font-size:13px; font-weight:700; color:var(--ink); }
+  .contact-form input, .contact-form textarea{
+    font-family:'Nunito', sans-serif; font-size:14.5px; padding:10px 12px; border-radius:7px;
+    border:2px solid var(--ink); background:var(--bg-panel-hover); color:var(--ink); resize:vertical;
+  }
+  .contact-form input:focus, .contact-form textarea:focus{ outline:2px solid var(--accent-dark); outline-offset:1px; }
+  .contact-form button{ align-self:flex-start; margin-top:4px; }
+
+
+  /* ─────────────────────────────────────────────
+     PIED DE PAGE + accessibilité (contour au clavier)
+     ───────────────────────────────────────────── */
+  footer{ padding:32px 0 50px; text-align:center; color:var(--text-dim); font-size:12.5px; }
+
+  :focus-visible{ outline: 3px solid var(--accent); outline-offset:3px; }
+
+
+  /* ─────────────────────────────────────────────
+     FICHE PROJET DÉTAILLÉE (s'ouvre au clic sur un projet)
+     Grande fenêtre scrollable avec sections : statut, cadre,
+     genèse, description, ce que j'ai fait, compétences, images.
+     ───────────────────────────────────────────── */
+  #modal{
+    position:fixed; inset:0; z-index:300; display:none;
+    align-items:flex-start; justify-content:center; padding:32px 20px;
+    background: rgba(10,16,12,0.86); overflow-y:auto; overscroll-behavior:contain;
+  }
+  #modal.open{ display:flex; animation: modalFade .2s ease; }
+  @keyframes modalFade{ from{ opacity:0; } to{ opacity:1; } }
+
+  .modal-box{
+    position:relative; width:100%; max-width:820px; margin:auto 0;
+    background:var(--bg-panel); color:var(--ink); border:3px solid var(--ink); border-radius:var(--radius);
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.4); overflow:hidden;
+    animation: modalPop .28s cubic-bezier(.3,1.3,.5,1);
+  }
+  @keyframes modalPop{ from{ transform:translateY(24px) scale(.97); opacity:0; } to{ transform:translateY(0) scale(1); opacity:1; } }
+
+  /* Bandeau du haut (titre, statut, technologies) */
+  .modal-hero{ padding:34px 34px 26px; background:var(--bg-deep); color:var(--text); border-bottom:4px solid var(--accent-dark); position:relative; }
+  .modal-back{
+    display:inline-block; margin-bottom:18px; cursor:pointer; background:none; border:0; padding:0;
+    font-family:'Baloo 2',sans-serif; font-weight:600; font-size:14px; color:var(--text-muted);
+  }
+  .modal-back:hover{ color:var(--accent); }
+  .modal-close{
+    position:absolute; top:16px; right:16px; width:38px; height:38px; cursor:pointer;
+    background:var(--bg-panel); color:var(--ink); border:2px solid var(--ink); border-radius:8px;
+    font-family:'Baloo 2',sans-serif; font-size:18px; line-height:1;
+    display:flex; align-items:center; justify-content:center; box-shadow:3px 3px 0 rgba(0,0,0,0.3);
+  }
+  .modal-close:hover{ background:var(--life); color:#fff; }
+  .modal-meta{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
+  .modal-status{
+    font-size:12px; font-weight:700; padding:5px 12px; border-radius:14px;
+    background:var(--accent-soft); color:var(--accent); border:2px solid var(--accent);
+  }
+  .modal-hero h3{ font-size:clamp(1.7rem,4vw,2.3rem); color:var(--text); padding-right:44px; line-height:1.15; }
+  .modal-engine{ font-size:14px; font-weight:600; color:var(--text-muted); margin-top:8px; }
+  .modal-hero .pills{ margin-top:16px; }
+  .modal-hero .pill{ background:rgba(255,255,255,0.08); color:var(--text); border-color:var(--border); }
+  .modal-hero .cat-tag.scolaire{ color:var(--sky); }
+  .modal-hero .cat-tag.pro{ color:var(--accent); }
+  .modal-hero .cat-tag.perso{ color:var(--leaf); }
+
+  /* Corps de la fiche */
+  .modal-body{ padding:30px 34px 36px; }
+  .modal-section{ margin-bottom:28px; }
+  .modal-section:last-of-type{ margin-bottom:0; }
+  .modal-section h4{
+    font-family:'Baloo 2',sans-serif; font-size:18px; margin:0 0 8px; color:var(--ink);
+    display:flex; align-items:center; gap:10px;
+  }
+  .modal-section h4::before{ content:""; width:12px; height:12px; border-radius:3px; background:var(--accent); border:2px solid var(--ink); flex-shrink:0; }
+  .modal-section p{ margin:0 0 10px; opacity:.88; }
+  .modal-section ul{ margin:0; padding-left:22px; }
+  .modal-section li{ margin-bottom:6px; opacity:.88; }
+
+  /* Galerie d'images */
+  .modal-gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; }
+  .modal-gallery img{ width:100%; display:block; border:3px solid var(--ink); border-radius:8px; box-shadow:3px 3px 0 rgba(0,0,0,0.25); background:var(--bg-deep); }
+  .modal-video{ width:100%; border:3px solid var(--ink); border-radius:8px; background:#000; display:block; margin-bottom:14px; }
+  /* Vignette "Voir sur YouTube" (remplace l'intégration directe, qui échoue
+     souvent sur les vidéos dont l'intégration a été désactivée par leur auteur) */
+  .modal-yt-card{
+    display:flex; align-items:center; gap:16px; padding:16px 18px; margin-bottom:12px;
+    background:var(--bg-deep); border:3px solid var(--ink); border-radius:10px;
+    text-decoration:none; color:var(--text); transition: transform .12s ease, box-shadow .12s ease;
+    box-shadow: var(--pixel-shadow);
+  }
+  .modal-yt-card:hover{ transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.3); }
+  .modal-yt-card .yt-icon{
+    flex-shrink:0; width:52px; height:52px; border-radius:10px; background:#c1503a;
+    display:flex; align-items:center; justify-content:center; border:2px solid var(--ink);
+  }
+  .modal-yt-card .yt-icon svg{ width:24px; height:24px; fill:#fff; margin-left:2px; }
+  .modal-yt-card .yt-text strong{ display:block; font-family:'Baloo 2',sans-serif; font-size:15px; }
+  .modal-yt-card .yt-text span{ font-size:12.5px; color:var(--text-muted); }
+
+  .modal-actions{ margin-top:30px; padding-top:22px; border-top:3px dashed rgba(35,48,31,0.25); }
+  .modal-actions .project-links{ margin-top:0; }
+
+  /* Les blocs de détails écrits dans les cartes restent invisibles sur la page */
+  .project-details{ display:none; }
+
+  body.modal-open{ overflow:hidden; }
+  @media (max-width:600px){
+    #modal{ padding:0; }
+    .modal-box{ border-radius:0; border-left:0; border-right:0; min-height:100vh; margin:0; }
+    .modal-hero{ padding:26px 20px 22px; }
+    .modal-body{ padding:24px 20px 30px; }
+  }
+
+
+  /* ─────────────────────────────────────────────
+     CURSEUR PERSONNALISÉ
+     Un anneau lumineux doré, avec un halo doux, suit la souris
+     avec un léger retard. Un petit point clair marque la position
+     exacte. Une traînée de particules dorées s'estompe derrière
+     le curseur, façon poussière d'étoile — discrète, jamais gênante.
+     Actif uniquement avec une vraie souris.
+     ───────────────────────────────────────────── */
+  @media (hover:hover) and (pointer:fine){
+    body.has-cursor, body.has-cursor a, body.has-cursor button, body.has-cursor .project{ cursor:none; }
+
+    #cursor-dot, #cursor-ring, .cursor-trail{
+      position:fixed; top:0; left:0; z-index:9999; pointer-events:none;
+      opacity:0; transition: opacity .25s ease;
+    }
+    body.has-cursor.cursor-on #cursor-dot,
+    body.has-cursor.cursor-on #cursor-ring,
+    body.has-cursor.cursor-on .cursor-trail{ opacity:1; }
+
+    /* Point central : marque la position exacte de la souris */
+    #cursor-dot{
+      width:6px; height:6px; margin:-3px 0 0 -3px; border-radius:50%;
+      background:var(--text); box-shadow:0 0 6px rgba(238,242,230,0.7);
+    }
+
+    /* Anneau doré avec halo lumineux : suit avec un léger retard */
+    #cursor-ring{
+      position:fixed; width:34px; height:34px; margin:-17px 0 0 -17px; border-radius:50%;
+      border:1.5px solid var(--accent);
+      box-shadow:
+        0 0 0 1px rgba(224,168,57,0.15),
+        0 0 16px 2px rgba(224,168,57,0.35),
+        inset 0 0 10px rgba(224,168,57,0.15);
+      transition: opacity .25s ease, width .25s cubic-bezier(.2,.8,.3,1), height .25s cubic-bezier(.2,.8,.3,1),
+                  margin .25s cubic-bezier(.2,.8,.3,1), border-color .25s ease, box-shadow .25s ease;
+    }
+    /* Petit reflet façon "gemme" en haut de l'anneau, pour un rendu moins plat */
+    #cursor-ring::after{
+      content:""; position:absolute; top:5px; left:11px; width:8px; height:3px; border-radius:50%;
+      background:rgba(255,255,255,0.55); filter:blur(.5px);
+    }
+    #cursor-ring.hover{
+      width:54px; height:54px; margin:-27px 0 0 -27px;
+      border-color:var(--leaf);
+      box-shadow:
+        0 0 0 1px rgba(127,174,111,0.18),
+        0 0 22px 4px rgba(127,174,111,0.4),
+        inset 0 0 14px rgba(127,174,111,0.18);
+    }
+    #cursor-ring.down{
+      width:26px; height:26px; margin:-13px 0 0 -13px;
+      box-shadow:
+        0 0 0 1px rgba(224,168,57,0.25),
+        0 0 20px 5px rgba(224,168,57,0.5),
+        inset 0 0 8px rgba(224,168,57,0.25);
+    }
+
+    /* Traînée : petites particules dorées qui rétrécissent et s'effacent */
+    .cursor-trail{
+      width:4px; height:4px; margin:-2px 0 0 -2px; border-radius:50%;
+      background:radial-gradient(circle, var(--accent) 0%, rgba(224,168,57,0) 70%);
+    }
+  }
+  @media (hover:none), (pointer:coarse){ #cursor-dot, #cursor-ring, .cursor-trail{ display:none; } }
+
+</style>
+</head>
+<!-- ═════════════════ FIN DU HEAD ═════════════════ -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     2. BODY : tout ce qui s'affiche à l'écran
+     ═══════════════════════════════════════════════════════════════════ -->
+<body>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     A. ÉCRAN DE CHARGEMENT
+        9 petits blocs colorés qui apparaissent au démarrage
+        puis disparaissent (géré par le JavaScript en bas)
+     ═══════════════════════════════════════════════════════════════════ -->
+<div id="boot" aria-hidden="true">
+  <div class="boot-blocks">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     B. BARRE DE PROGRESSION
+        La barre jaune tout en haut qui se remplit quand on scrolle
+     ═══════════════════════════════════════════════════════════════════ -->
+<div id="progress-track"><div id="progress"></div></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     C. MENU DE NAVIGATION
+        Logo à gauche, liens à droite
+     ═══════════════════════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+
+    <!-- ─── Logo (EM + nom) ─── -->
+    <a href="#top" class="logo">
+      <span class="logo-mark">EM</span>
+      <span class="logo-name">Elzo Menu</span>
+    </a>
+
+    <!-- ─── Liste des liens du menu ─── -->
+    <ul class="nav-links">
+      <li><a href="#top">Accueil</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+
+      <!-- Lien "Projets" avec sous-menu déroulant au survol -->
+      <li class="has-sub">
+        <a href="#projets">Projets</a>
+        <ul class="sub-links">
+          <li><a href="#projets" data-filter="scolaire">Projets scolaires</a></li>
+          <li><a href="#projets" data-filter="pro">Projets professionnels</a></li>
+          <li><a href="#projets" data-filter="perso">Projets personnels</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     D. SECTION D'ACCUEIL (HERO)
+        La grande zone en haut : titre, présentation, boutons, photo
+     ═══════════════════════════════════════════════════════════════════ -->
+<header class="hero" id="top">
+
+  <!-- ─── Décor : petits blocs qui flottent ─── -->
+  <div class="hero-blocks">
+    <span class="hb1"></span><span class="hb2"></span><span class="hb3"></span><span class="hb4"></span>
+  </div>
+
+  <!-- ─── Décor : soleil ─── -->
+  <div class="hero-sun" aria-hidden="true"></div>
+
+  <!-- ─── Décor : montagnes et herbe (dessin SVG en bas) ─── -->
+  <div class="hero-scenery" aria-hidden="true">
+    <svg viewBox="0 0 1000 190" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 120 L60 90 L130 130 L210 70 L300 125 L380 95 L470 140 L560 100 L650 135 L740 85 L830 130 L920 100 L1000 120 L1000 190 L0 190 Z" fill="#2c4a34" opacity="0.55"/>
+      <path d="M0 150 L90 115 L170 155 L260 105 L350 150 L440 120 L530 160 L620 118 L710 155 L800 125 L900 155 L1000 140 L1000 190 L0 190 Z" fill="#233d2a" opacity="0.75"/>
+      <path d="M0 190 C 40 178, 80 178, 120 190 C 160 178, 200 178, 240 190 C 280 178, 320 178, 360 190 C 400 178, 440 178, 480 190 C 520 178, 560 178, 600 190 C 640 178, 680 178, 720 190 C 760 178, 800 178, 840 190 C 880 178, 920 178, 960 190 C 980 184, 990 184, 1000 190 L1000 190 L0 190 Z" fill="#16241c"/>
+      <g stroke="#7fae6f" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9">
+        <path d="M110 190 V168 M110 168 L100 178 M110 168 L120 178 M110 172 L102 180 M110 172 L118 180"/>
+        <path d="M340 190 V164 M340 164 L329 175 M340 164 L351 175 M340 169 L331 178 M340 169 L349 178"/>
+        <path d="M690 190 V170 M690 170 L681 179 M690 170 L699 179"/>
+        <path d="M900 190 V166 M900 166 L890 176 M900 166 L910 176 M900 171 L892 179 M900 171 L908 179"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ─── Contenu du hero : 2 colonnes (texte | photo) ─── -->
+  <div class="wrap hero-grid">
+
+    <!-- ══ Colonne de gauche : les textes ══ -->
+    <div class="hero-copy">
+
+      <!-- Étiquette bleue -->
+      <div class="eyebrow">Etudiant SIO SLAM</div>
+
+      <!-- Sous-titre : formation actuelle en clair -->
+      <div class="training-sub mono">1ʳᵉ année BTS SIO, option SLAM (CNED)</div>
+
+      <!-- Badge "disponible" avec point clignotant -->
+      <div class="status-badge"><span class="status-dot"></span>Ouvert aux stages & alternances</div>
+
+      <!-- Titre principal -->
+      <h1 class="title">Je conçois des niveaux qu'on a envie de rejouer.</h1>
+
+      <!-- Petit texte de présentation -->
+      <p class="pitch">Salut ! Née en 2008, basé dans le 60, je suis en cours de formation pour me spécialiser dans le développement informatique.je suis intéressé par le jeu vidéo, la VR & le jeu de société.</p>
+
+      <!-- Boutons d'action -->
+      <div class="hero-cta">
+        <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+        <a href="#contact" class="btn btn-ghost">Me contacter</a>
+        <a href="Elzo_Menu_CV.pdf" class="btn btn-ghost" download>Télécharger le CV</a>
+      </div>
+    </div>
+
+    <!-- ══ Colonne de droite : la photo ══ -->
+    <div class="hero-photo">
+      <div class="photo-wrap">
+
+        <!-- ┌──────────────────────────────────────────────┐
+             │ PHOTO : pour changer l'image, modifie le nom │
+             │ du fichier dans src="..." ci-dessous         │
+             └──────────────────────────────────────────────┘ -->
+        <div class="photo-frame">
+          <img src="Portfolio%20Professional%20Photo.png" alt="Photo d'Elzo Menu" onerror="this.style.display='none'; this.parentElement.classList.add('missing');">
+          <!-- ↑ FIN de l'image -->
+
+          <!-- Affiché seulement si la photo est introuvable -->
+          <div class="photo-fallback">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+            <span class="mono">Ajoute ta photo<br>(photo.jpg)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
+<!-- ═════════════════ FIN DU HERO ═════════════════ -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     E. CONTENU PRINCIPAL : toutes les sections du site
+     ═══════════════════════════════════════════════════════════════════ -->
+<main class="wrap">
+
+
+  <!-- ═════════════════════════════════════════════════════════════════
+       SECTION 1 : À PROPOS
+       Bio à gauche, barres de niveau à droite
+       ═════════════════════════════════════════════════════════════════ -->
+  <section id="apropos">
+
+    <!-- ─── En-tête de la section (icône + titre) ─── -->
+    <div class="section-head reveal">
+      <div class="level-flag" style="--zone:var(--sky)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow-txt" style="color:var(--sky)">Qui je suis</div>
+        <h2>À propos</h2>
+      </div>
+    </div>
+
+    <!-- ─── Contenu : 2 cartes côte à côte ─── -->
+    <div class="sheet">
+
+      <!-- Carte de gauche : présentation écrite -->
+      <div class="card reveal sheet-bio">
+        <p><strong>Formation actuelle :</strong> BTS SIO option SLAM (Solutions Logicielles et Applications Métiers), 1ʳᵉ année, à distance via le CNED.</p>
+        <p><strong>Objectif :</strong> évoluer vers un poste de Game Designer / Level Designer, en m'appuyant sur mes bases en développement pour prototyper et itérer rapidement sur mes idées.</p>
+        <p>Je m'intéresse particulièrement à la conception d'espaces de jeu : rythme d'exploration, lecture visuelle d'un niveau, et équilibrage entre difficulté et plaisir de jeu.</p>
+
+        <!-- Encadré recherche de stage -->
+        <div class="stage-callout">
+          <strong>🔎 Je recherche un stage</strong>
+          <span>Spécialité SLAM (développement) · 4 à 5 semaines · entre mai et août 2027</span>
+        </div>
+      </div>
+
+      <!-- Carte de droite : barres de compétences
+           → "width:XX%" règle le remplissage de chaque barre -->
+      <div class="card reveal sheet-skills">
+
+        <!-- Barre 1 : Level Design -->
+        <div class="skill-row">
+          <div class="skill-top"><span>Level Design</span><span>Intermédiaire</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:50%;background:var(--accent)"></div></div>
+        </div>
+
+        <!-- Barre 2 : Game Design -->
+        <div class="skill-row">
+          <div class="skill-top"><span>Game Design </span><span>Confirmé</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:68%;background:var(--sky)"></div></div>
+        </div>
+
+        <!-- Barre 3 : Programmation -->
+        <div class="skill-row">
+          <div class="skill-top"><span>Programmation (C#,HTML,JAVA)</span><span>Débutant</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:40%;background:var(--leaf)"></div></div>
+        </div>
+
+        <!-- Barre 4 : Narration -->
+        <div class="skill-row">
+          <div class="skill-top"><span>Narration / worldbuilding</span><span>Intermédiaire</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:40%;background:var(--sky)"></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ═════════ FIN SECTION À PROPOS ═════════ -->
+
+
+  <!-- ═════════════════════════════════════════════════════════════════
+       SECTION 2 : PARCOURS
+       Frise chronologique de ta formation
+       ═════════════════════════════════════════════════════════════════ -->
+  <section id="parcours">
+
+    <!-- ─── En-tête de la section ─── -->
+    <div class="section-head reveal" style="--zone:var(--leaf)">
+      <div class="level-flag" style="--zone:var(--leaf)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><path d="M3 21V4l8 4 8-4v17"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow-txt" style="color:var(--leaf)">Formation</div>
+        <h2>Parcours</h2>
+      </div>
+    </div>
+
+    <!-- ─── Frise chronologique ─── -->
+    <div class="timeline">
+
+      <!-- Étape 1 : Baccalauréat -->
+      <div class="tstep reveal">
+        <div class="when">2024</div>
+        <h3>Baccalauréat</h3>
+        <p>Obtention du baccalauréat, avec un intérêt déjà marqué pour la conception de jeux et les mécaniques de gameplay.</p>
+      </div>
+
+      <!-- Étape 2 : BTS 1ère année (EN COURS)
+           → data-start / data-end définissent la période de l'année scolaire.
+             Le rond et la barre ci-dessous se remplissent automatiquement
+             selon la date du jour (calculé en JavaScript, voir plus bas). -->
+      <div class="tstep reveal in-progress" style="transition-delay:.08s" data-start="2026-09-01" data-end="2027-06-30">
+        <div class="when">2026 à 2027 <span class="when-progress-label"></span></div>
+        <h3>BTS SIO SLAM, 1ʳᵉ année (CNED)</h3>
+        <p>Formation à distance en développement logiciel, avec un travail personnel en parallèle sur la conception de niveaux et de prototypes de jeu.</p>
+        <div class="progress-track"><div class="progress-fill"></div></div>
+      </div>
+
+      <!-- Étape 3 : BTS 2ème année (à venir → classe "future" = rond vide) -->
+      <div class="tstep reveal future" style="transition-delay:.16s">
+        <div class="when">2027 à 2028</div>
+        <h3>BTS SIO SLAM, 2ᵉ année (CNED)</h3>
+        <p>Poursuite de la formation, avec l'objectif d'orienter les projets vers le développement de jeu et la conception de niveaux.</p>
+      </div>
+
+      <!-- Étape 4 : Spécialisation (à venir) -->
+      <div class="tstep reveal future" style="transition-delay:.24s">
+        <div class="when">Prochaine étape</div>
+        <h3>Spécialisation Game Design / Level Design</h3>
+        <p>Approfondir la conception de niveaux à travers des formations ou projets collaboratifs, et construire un portfolio de niveaux jouables.</p>
+      </div>
+
+    </div>
+
+    <!-- ┌──────────────────────────────────────────────────────────────┐
+         │ ENCART ADMINISTRATIF : bloc de compétences visé par le BTS   │
+         │ Volontairement sobre et séparé du reste du contenu créatif   │
+         │ (c'est une info liée au diplôme, pas à ton profil personnel) │
+         └──────────────────────────────────────────────────────────────┘ -->
+    <div class="bts-info-box reveal">
+      <div class="bts-info-head">🎓 Cadre officiel du BTS SIO SLAM</div>
+      <p>Ce portfolio s'inscrit dans le bloc de compétences <strong>« Support et mise à disposition de services informatiques »</strong>, visé au cours de la formation :</p>
+      <ul>
+        <li>Gérer le patrimoine informatique</li>
+        <li>Répondre aux incidents et demandes des utilisateurs</li>
+        <li>Développer la présence en ligne de l'organisation</li>
+        <li>Travailler en mode projet</li>
+      </ul>
+    </div>
+  </section>
+  <!-- ═════════ FIN SECTION PARCOURS ═════════ -->
+
+
+  <!-- ═════════════════════════════════════════════════════════════════
+       SECTION 3 : OUTILS & COMPÉTENCES
+       Grille des logiciels que tu utilises
+       → Pour ajouter un outil : copie une ligne "card reveal tool"
+       ═════════════════════════════════════════════════════════════════ -->
+  <section id="competences">
+
+    <!-- ─── En-tête de la section ─── -->
+    <div class="section-head reveal" style="--zone:var(--accent)">
+      <div class="level-flag" style="--zone:var(--accent)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><path d="M14 2 4 14h6l-1 8 11-13h-6l1-7z"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow-txt" style="color:var(--accent)">Boîte à outils</div>
+        <h2>Outils & compétences</h2>
+      </div>
+    </div>
+
+    <!-- ─── Grille d'outils (4 colonnes) ─── -->
+    <div class="grid-4">
+      <div class="card reveal tool"><div class="name">Visual Studio Code</div><div class="role">Logiciel de programmation</div></div>
+      <div class="card reveal tool" style="transition-delay:.1s"><div class="name">Godot</div><div class="role">Petits jeux 2D</div></div>
+      <div class="card reveal tool" style="transition-delay:.15s"><div class="name">WorldPainter</div><div class="role">Logiciel de création de map</div></div>
+      <div class="card reveal tool" style="transition-delay:.2s"><div class="name">BlockBench</div><div class="role">Logiciel de modélisation 3D</div></div>
+      <div class="card reveal tool" style="transition-delay:.25s"><div class="name">Canva</div><div class="role">Logiciel de création de design</div></div>
+      <div class="card reveal tool" style="transition-delay:.3s"><div class="name">Notion</div><div class="role">Site d'organisation en équipe</div></div>
+      <div class="card reveal tool" style="transition-delay:.35s"><div class="name">CapCut</div><div class="role">Montage vidéo</div></div>
+    </div>
+  </section>
+  <!-- ═════════ FIN SECTION OUTILS & COMPÉTENCES ═════════ -->
+
+
+  <!-- ═════════════════════════════════════════════════════════════════
+       SECTION 4 : CERTIFICATIONS
+       Diplômes obtenus (badge vert "Obtenue")
+       et objectifs futurs (badge jaune "Objectif")
+       ═════════════════════════════════════════════════════════════════ -->
+  <section id="certifications">
+
+    <!-- ─── En-tête de la section ─── -->
+    <div class="section-head reveal" style="--zone:var(--sky)">
+      <div class="level-flag" style="--zone:var(--sky)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow-txt" style="color:var(--sky)">Diplômes & certifications</div>
+        <h2>Certifications</h2>
+      </div>
+    </div>
+
+    <!-- ─── Liste des certifications ─── -->
+    <div class="certif-list">
+
+      <!-- Certification 1 : PIX (obtenue) -->
+      <div class="card reveal certif">
+        <div><div class="name">PIX</div><div class="issuer">Certification des compétences numériques</div></div>
+        <div class="certif-status ok">Obtenue</div>
+      </div>
+
+      <!-- Certification 2 : Brevet (obtenue) -->
+      <div class="card reveal certif" style="transition-delay:.05s">
+        <div><div class="name">Brevet des collèges</div><div class="issuer">compétences de base acquises à la fin de la scolarité au collège</div></div>
+        <div class="certif-status ok">Obtenue</div>
+      </div>
+
+      <!-- Certification 3 : RNCP Niveau 6 (objectif) -->
+      <div class="card reveal certif" style="transition-delay:.1s">
+        <div><div class="name">RNCP Niveau 6 (Bac+3/4) – Concepteur de jeux vidéo / Game Designer</div><div class="issuer">Game Designer & concepteur de jeu professionnel</div></div>
+        <div class="certif-status pending">Objectif</div>
+      </div>
+
+      <!-- Certification 4 : RNCP Niveau 7 (objectif) -->
+      <div class="card reveal certif" style="transition-delay:.15s">
+        <div><div class="name">RNCP Niveau 7 (Bac+5) – Lead Game Designer</div><div class="issuer">Axée sur la direction créative, la veille technologique et la gestion d'équipe de conception</div></div>
+        <div class="certif-status pending">Objectif</div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ═════════ FIN SECTION CERTIFICATIONS ═════════ -->
+
+
+  <!-- ═════════════════════════════════════════════════════════════════
+       SECTION 5 : PROJETS
+       Boutons de filtre + liste des projets
+       Chaque projet a un data-cat : "scolaire", "pro" ou "perso"
+       (c'est ce qui permet au filtre de fonctionner)
+       ═════════════════════════════════════════════════════════════════ -->
+  <section id="projets">
+
+    <!-- ─── En-tête de la section ─── -->
+    <div class="section-head reveal" style="--zone:var(--leaf)">
+      <div class="level-flag" style="--zone:var(--leaf)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow-txt" style="color:var(--leaf)">Portfolio</div>
+        <h2>Projets</h2>
+      </div>
+    </div>
+
+    <!-- ─── Boutons de filtre ─── -->
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="scolaire">Projets scolaires</button>
+      <button class="filter-btn" data-filter="pro">Projets professionnels</button>
+      <button class="filter-btn" data-filter="perso">Projets personnels</button>
+    </div>
+
+    <!-- ─── Liste des projets ─── -->
+    <div class="projects">
+
+
+      <!-- ┌──────────────────────────────────────────────┐
+           │ PROJET SCOLAIRE : Course VS Natation         │
+           └──────────────────────────────────────────────┘ -->
+      <div class="card reveal project" data-cat="scolaire" data-status="Terminé · 2ⁿᵈᵉ, 2023-2024">
+        <div class="project-top">
+          <div>
+            <h3>Course VS Natation</h3>
+            <div class="engine">HTML/CSS · Site web · Sciences Numériques et Technologie (SNT), 2ⁿᵈᵉ</div>
+          </div>
+          <span class="cat-tag scolaire">Scolaire</span>
+        </div>
+        <p class="desc">Site web comparatif réalisé en cours de Sciences Numériques et Technologie (SNT), en classe de seconde. Le site oppose course à pied et natation à travers deux articles détaillant les bienfaits et particularités de chaque activité, avec citation des sources utilisées.</p>
+        <!-- Technologies / compétences -->
+        <div class="pills"><span class="pill">HTML</span><span class="pill">Recherche documentaire</span><span class="pill">Rédaction web</span></div>
+        <!-- ┌─────────────────────────────────────────────────────┐
+             │ DÉTAILS DE LA FICHE (invisibles sur la page)         │
+             └─────────────────────────────────────────────────────┘ -->
+        <div class="project-details">
+          <section data-title="Cadre de réalisation">
+            <p>Projet réalisé en autonomie dans le cadre du cours de Sciences Numériques et Technologie (SNT), en classe de seconde, à publier sous forme de site web.</p>
+          </section>
+          <section data-title="Contenu du site">
+            <ul>
+              <li>Une page d'accueil présentant le débat "course à pied VS natation"</li>
+              <li>Un article dédié à la natation</li>
+              <li>Un article dédié à la course à pied</li>
+              <li>Une liste des sources utilisées pour la rédaction</li>
+            </ul>
+          </section>
+          <section data-title="Compétences mobilisées">
+            <ul>
+              <li>Rédaction et structuration de contenu web</li>
+              <li>Recherche et citation de sources fiables</li>
+              <li>Mise en page HTML de base</li>
+            </ul>
+          </section>
+        </div>
+        <!-- Lien vers le projet -->
+        <a href="https://hyco-75.github.io/monsitedeseconde/index.html" target="_blank" rel="noopener" class="project-link">Voir le projet</a>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
+
+
+      <!-- ┌──────────────────────────────────────────────┐
+           │ PROJET PROFESSIONNEL : Game of Arkadia       │
+           └──────────────────────────────────────────────┘ -->
+      <div class="card reveal project" data-cat="pro" style="transition-delay:.05s" data-status="Terminé · sept. 2025 → mars 2026">
+        <div class="project-top">
+          <div>
+            <h3>Game of Arkadia</h3>
+            <div class="engine">Minecraft · Serveur MMORPG narratif médiéval · Freelance (sept. 2025 → mars 2026)</div>
+          </div>
+          <span class="cat-tag pro">Professionnel</span>
+        </div>
+        <p class="desc">Mission freelance sur un serveur Minecraft MMORPG narratif à l'univers médiéval, avec une double casquette Game Design et Level Design. J'y ai notamment conçu un donjon : un village fortifié infesté, dont le boss est une araignée.</p>
+        <!-- Technologies / compétences -->
+        <div class="pills"><span class="pill">Game Design</span><span class="pill">Level Design</span><span class="pill">Donjon</span><span class="pill">Minecraft</span></div>
+        <!-- ┌─────────────────────────────────────────────────────┐
+             │ DÉTAILS DE LA FICHE (invisibles sur la page)         │
+             │ Affichés dans la fenêtre qui s'ouvre au clic.        │
+             │ Supprime une <section> pour retirer cette partie.    │
+             └─────────────────────────────────────────────────────┘ -->
+        <div class="project-details">
+          <section data-title="Cadre de réalisation">
+            <p>Mission freelance de septembre 2025 à mars 2026, sur un serveur Minecraft MMORPG narratif à l'univers médiéval.</p>
+          </section>
+          <section data-title="Mon rôle">
+            <ul>
+              <li>Game Design</li>
+              <li>Level Design</li>
+            </ul>
+          </section>
+          <section data-title="Le donjon">
+            <p>J'ai conçu un donjon prenant place dans un village fortifié infesté, dont le boss est une araignée.</p>
+          </section>
+          <!-- À AJOUTER PLUS TARD (décommente et complète) :
+          <section data-title="Genèse du projet"><p>...</p></section>
+          <section data-title="Compétences mobilisées"><ul><li>...</li></ul></section>
+          <img src="images/arkadia-1.png" alt="Description de l'image">
+          -->
+        </div>
+        <!-- Lien vers le projet -->
+        <a href="https://www.gameofarkadia.net/" target="_blank" rel="noopener" class="project-link">Voir le projet</a>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
+
+
+      <!-- ┌──────────────────────────────────────────────┐
+           │ PROJET PERSONNEL 1 : Infect D.A.X            │
+           └──────────────────────────────────────────────┘ -->
+      <div class="card reveal project" data-cat="perso" style="transition-delay:.1s" data-status="Prototype · BAUDO'S Jam 2025">
+        <div class="project-top">
+          <div>
+            <h3>An BauBot Adventure : Infect D.A.X</h3>
+            <div class="engine">Godot · Plateformer 2D pixel art · BAUDO'S Jam (automne 2025)</div>
+          </div>
+          <span class="cat-tag perso">Personnel</span>
+        </div>
+        <p class="desc">Fast plateformer d'action 2D en pixel art, réalisé sous Godot pour la BAUDO'S Jam (édition automne 2025), en co-développement avec MilanDevpy. Le joueur incarne Prometheus, un virus chargé de pirater l'Horrible DAX, avec double saut et mécaniques d'action. Le jeu est publié sur itch.io (statut prototype) et jouable directement dans le navigateur (HTML5) ou en version Windows.</p>
+        <!-- Technologies / compétences -->
+        <div class="pills"><span class="pill">Godot</span><span class="pill">Pixel art</span><span class="pill">Game jam</span><span class="pill">Plateformer 2D</span><span class="pill">Travail d'équipe</span></div>
+        <!-- ┌─────────────────────────────────────────────────────┐
+             │ DÉTAILS DE LA FICHE (invisibles sur la page)         │
+             │ Affichés dans la fenêtre qui s'ouvre au clic.        │
+             │ Supprime une <section> pour retirer cette partie.    │
+             └─────────────────────────────────────────────────────┘ -->
+        <div class="project-details">
+          <section data-title="Cadre de réalisation">
+            <p>Jeu réalisé pendant la BAUDO'S Jam (édition automne 2025), en co-développement avec MilanDevpy. Publié sur itch.io avec le statut « prototype ».</p>
+          </section>
+          <section data-title="Le jeu">
+            <p>Le joueur incarne Prometheus, un virus dont la mission est de pirater l'Horrible DAX afin de récupérer des informations sensibles. C'est un fast plateformer d'action 2D en pixel art, avec double saut et un injecteur pour interagir avec les cibles.</p>
+          </section>
+          <section data-title="Plateformes">
+            <ul>
+              <li>HTML5 : jouable directement dans le navigateur</li>
+              <li>Windows : version téléchargeable</li>
+            </ul>
+          </section>
+          <!-- À AJOUTER PLUS TARD (décommente et complète) :
+          <section data-title="Ce que j'ai fait"><ul><li>...</li></ul></section>
+          <section data-title="Compétences mobilisées"><ul><li>...</li></ul></section>
+          <img src="images/daxx-1.png" alt="Capture du jeu">
+          -->
+        </div>
+        <!-- Lien vers le projet -->
+        <a href="https://milandevpy.itch.io/an-baubot-adventure" target="_blank" rel="noopener" class="project-link">Voir le projet</a>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
+
+
+      <!-- ┌──────────────────────────────────────────────┐
+           │ PROJET PERSONNEL 2 : Hydere                  │
+           └──────────────────────────────────────────────┘ -->
+      <div class="card reveal project" data-cat="perso" style="transition-delay:.15s" data-status="V2 · Projet fondé en 2021">
+        <div class="project-top">
+          <div>
+            <h3>Hydere</h3>
+            <div class="engine">Minecraft Bedrock (moddé) · Serveur MMORPG · Projet fondé par moi (2021)</div>
+          </div>
+          <span class="cat-tag perso">Personnel</span>
+        </div>
+        <p class="desc">Serveur MMORPG open world sur Minecraft Bedrock (version 1.19.X), que j'ai fondé et sur lequel je suis en charge des quêtes et des donjons. Terrasse des boss redoutables, explore une map de 42 000 blocs et découvre ses secrets !</p>
+        <!-- Technologies / compétences -->
+        <div class="pills"><span class="pill">Game Design</span><span class="pill">Quêtes</span><span class="pill">Donjons</span><span class="pill">Boss</span><span class="pill">Gestion de projet</span></div>
+        <!-- ┌─────────────────────────────────────────────────────┐
+             │ DÉTAILS DE LA FICHE (invisibles sur la page)         │
+             │ Affichés dans la fenêtre qui s'ouvre au clic.        │
+             │ Supprime une <section> pour retirer cette partie.    │
+             └─────────────────────────────────────────────────────┘ -->
+        <div class="project-details">
+          <section data-title="Cadre de réalisation">
+            <p>Serveur MMORPG open world sur Minecraft Bedrock (version 1.19.X), que j'ai fondé moi-même.</p>
+          </section>
+          <section data-title="Mon rôle">
+            <p>En charge des quêtes et des donjons (avec boss et combats), et de la direction du projet.</p>
+          </section>
+          <section data-title="Ce qu'on y trouve">
+            <ul>
+              <li>Des boss redoutables à terrasser</li>
+              <li>Plusieurs mondes à explorer, avec leurs secrets à découvrir</li>
+              <li>Un système de guilde</li>
+              <li>Des équipements à débloquer, et des objets intéressants à trouver</li>
+              <li>Des coffres à décrocher</li>
+              <li>Des PNJ éparpillés sur la map pour améliorer ses armes</li>
+              <li>Une map totalement libre de 42 000 blocs</li>
+            </ul>
+          </section>
+          <section data-title="Une vision long terme">
+            <p>La V2 est mon projet le plus abouti à ce jour.</p>
+          </section>
+          <section data-title="Aperçu en vidéo">
+            <a href="https://youtu.be/I6z57R1fpSU" target="_blank" rel="noopener" data-youtube-card data-yt-label="Aperçu du serveur, vidéo 1"></a>
+            <a href="https://youtu.be/aGOWkSDaJJg" target="_blank" rel="noopener" data-youtube-card data-yt-label="Aperçu du serveur, vidéo 2"></a>
+          </section>
+          <!-- À AJOUTER PLUS TARD (décommente et complète) :
+          <section data-title="Genèse du projet"><p>...</p></section>
+          <section data-title="Compétences mobilisées"><ul><li>...</li></ul></section>
+          <img src="images/hydere-1.png" alt="Capture du serveur">
+          -->
+        </div>
+        <!-- Lien vers le projet -->
+        <a href="https://serveur-prive.net/minecraft/hidere-8296" target="_blank" rel="noopener" class="project-link">Voir le projet</a>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
+
+
+      <!-- ┌──────────────────────────────────────────────┐
+           │ PROJET PROFESSIONNEL : Orialis                │
+           │ Projet sous confidentialité (NDA) : le texte  │
+           │ ci-dessous décrit UNIQUEMENT la démarche et   │
+           │ le rôle, jamais le contenu de la mécanique.   │
+           │ Ne pas ajouter de détails techniques sans     │
+           │ accord écrit de l'équipe Orialis.             │
+           └──────────────────────────────────────────────┘ -->
+      <div class="card reveal project" data-cat="pro" style="transition-delay:.1s" data-status="En cours · Sous confidentialité (NDA)">
+        <div class="project-top">
+          <div>
+            <h3>Orialis</h3>
+            <div class="engine">Minecraft · Serveur MMORPG Star Wars · Mission freelance</div>
+          </div>
+          <span class="cat-tag pro">Professionnel</span>
+        </div>
+        <p class="desc">Conception d'une mécanique de gameplay pour un serveur Minecraft MMORPG de grande envergure, au sein d'une équipe pluridisciplinaire. Le projet étant sous accord de confidentialité, le détail de la mécanique n'est pas dévoilé ici : cette fiche présente ma démarche de travail plutôt que le contenu livré.</p>
+        <!-- Technologies / compétences -->
+        <div class="pills"><span class="pill">Game Design</span><span class="pill">Logique de progression</span><span class="pill">Économie interne</span><span class="pill">Documentation technique</span><span class="pill">Travail avec des développeurs</span></div>
+        <!-- ┌─────────────────────────────────────────────────────┐
+             │ DÉTAILS DE LA FICHE (invisibles sur la page)         │
+             │ Affichés dans la fenêtre qui s'ouvre au clic.        │
+             └─────────────────────────────────────────────────────┘ -->
+        <div class="project-details">
+          <section data-title="Contexte">
+            <p>Projet sollicité pour concevoir une mécanique de gameplay au sein d'un serveur Minecraft MMORPG de grande envergure, en équipe pluridisciplinaire. Le sujet est couvert par un accord de confidentialité (NDA).</p>
+          </section>
+          <section data-title="Mon périmètre">
+            <p>Conception complète d'une mécanique de gameplay, de la réflexion initiale jusqu'à la livraison du cahier des charges.</p>
+          </section>
+          <section data-title="Ma méthode">
+            <ul>
+              <li><strong>Exploration libre avant formalisation :</strong> pas de cahier des charges imposé au départ, une phase d'idéation libre, volontairement prolongée, pour ne pas fermer de pistes trop tôt</li>
+              <li><strong>Ancrage systématique dans le lore :</strong> chaque mécanique confrontée à l'univers existant (bestiaire, factions, cohérence temporelle) via des recherches documentaires régulières</li>
+              <li><strong>Recherche de précédents :</strong> étude de systèmes réels (mécanique, physique, logique industrielle) pour la crédibilité, et de jeux existants pour se démarquer plutôt que copier</li>
+              <li><strong>Conception modulaire par blocs :</strong> découpage en blocs indépendants (boucle de jeu, danger, progression, dimension sociale...), chacun conçu et validé séparément</li>
+              <li><strong>Documentation vivante :</strong> une section "points à définir" intégrée dès la v1, mise à jour à chaque version pour piloter les zones encore floues sans bloquer l'avancement</li>
+              <li><strong>Itérations avec retours structurés :</strong> 6 versions du cahier des charges, chaque retour analysé section par section et les changements tracés d'une version à l'autre</li>
+              <li><strong>Schématisation ciblée :</strong> des schémas pour les mécaniques les plus denses, pensés pour être compris en quelques secondes par un profil non-spécialiste</li>
+              <li><strong>Filtre "expérience joueur" :</strong> chaque mécanique évaluée sur la sensation produite, le jeu solo/social qu'elle induit, et si elle crée un vrai choix</li>
+              <li><strong>Arbitrages présentés, pas imposés :</strong> les choix hors de mon ressort (économie du serveur, etc.) formalisés en options comparées, pour que l'équipe tranche en connaissance de cause</li>
+              <li><strong>Cohérence jusqu'à l'interface :</strong> même les messages système repensés (voix d'un personnage "Ordinateur de Bord") pour préserver l'immersion jusqu'au dernier détail</li>
+            </ul>
+          </section>
+          <section data-title="Compétences mobilisées">
+            <ul>
+              <li>Game design</li>
+              <li>Logique de progression</li>
+              <li>Économie interne</li>
+              <li>Documentation technique</li>
+              <li>Travail en coordination avec des développeurs</li>
+            </ul>
+          </section>
+          <section data-title="Pourquoi ce projet n'est pas détaillé ici">
+            <p>Le contenu précis de la mécanique reste confidentiel. Une attestation écrite de l'équipe, précisant mon rôle, la durée et le niveau de responsabilité, peut être fournie sur demande.</p>
+          </section>
+        </div>
+        <!-- Pas de lien externe : projet sous confidentialité -->
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
+
+
+      <!-- ╔══════════════════════════════════════════════════════════╗
+           ║ CADRES "RIEN ICI POUR L'INSTANT" (1 par catégorie)       ║
+           ║                                                          ║
+           ║ Chaque cadre est caché par défaut. Le JavaScript          ║
+           ║ l'affiche UNIQUEMENT si sa catégorie ne contient aucun   ║
+           ║ projet (et que cette catégorie est sélectionnée).        ║
+           ║ → data-empty="..." doit correspondre au data-cat des     ║
+           ║   projets. Tu peux modifier le titre et le texte.        ║
+           ╚══════════════════════════════════════════════════════════╝ -->
+
+      <!-- ┌────────────────────────────────────────┐
+           │ CADRE VIDE : Projets scolaires         │
+           └────────────────────────────────────────┘ -->
+      <div class="empty-state" data-empty="scolaire">
+        <div class="empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7fae6f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <h3>Rien ici pour l'instant</h3>
+        <p>Je n'ai pas encore de projet scolaire à présenter. Je les ajoute au fur et à mesure de ma formation !</p>
+      </div>
+
+      <!-- ┌────────────────────────────────────────┐
+           │ CADRE VIDE : Projets professionnels    │
+           └────────────────────────────────────────┘ -->
+      <div class="empty-state" data-empty="pro">
+        <div class="empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7fae6f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <h3>Rien ici pour l'instant</h3>
+        <p>Je n'ai pas encore de projet professionnel à présenter. Ils arriveront avec mes premiers stages !</p>
+      </div>
+
+      <!-- ┌────────────────────────────────────────┐
+           │ CADRE VIDE : Projets personnels        │
+           └────────────────────────────────────────┘ -->
+      <div class="empty-state" data-empty="perso">
+        <div class="empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7fae6f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <h3>Rien ici pour l'instant</h3>
+        <p>Je n'ai pas encore de projet personnel à présenter. Reviens bientôt !</p>
+      </div>
+
+
+    </div>
+  </section>
+  <!-- ═════════ FIN SECTION PROJETS ═════════ -->
+
+
+  <!-- ═════════════════════════════════════════════════════════════════
+       SECTION 6 : CONTACT
+       Ton email et ton LinkedIn
+       ═════════════════════════════════════════════════════════════════ -->
+  <section id="contact">
+
+    <!-- ─── En-tête de la section ─── -->
+    <div class="section-head reveal" style="--zone:var(--life)">
+      <div class="level-flag" style="--zone:var(--life)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 8l9 6 9-6M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow-txt" style="color:var(--life)">Discutons</div>
+        <h2>Contact</h2>
+      </div>
+    </div>
+
+    <!-- ─── Bloc contact : infos à gauche, formulaire à droite ─── -->
+    <div class="contact-grid">
+
+      <!-- Carte de gauche : coordonnées -->
+      <div class="card reveal contact-panel">
+        <h2>Discutons ensemble.</h2>
+        <div class="contact-links">
+          <!-- Ville -->
+          <span class="contact-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Moliens
+          </span>
+          <!-- Lien email : ouvre le logiciel de messagerie -->
+          <a href="mailto:elzomenu3@gmail.com">elzomenu3@gmail.com</a>
+          <!-- Lien LinkedIn -->
+          <a href="https://www.linkedin.com/in/elzo-menu-878013435/" target="_blank" rel="noopener">www.linkedin.com/in/elzo-menu-878013435/</a>
+          <!-- Lien GitHub -->
+          <a href="https://github.com/Hyco-75" target="_blank" rel="noopener">github.com/Hyco-75</a>
+        </div>
+      </div>
+
+      <!-- Carte de droite : formulaire de contact (envoi par email via Formspree) -->
+      <div class="card reveal contact-form-panel">
+        <h3>Envoyer un message</h3>
+        <!-- Formulaire connecté à Formspree (envoi par email) -->
+        <form action="https://formspree.io/f/mljdbpag" method="POST" class="contact-form">
+          <label>Nom
+            <input type="text" name="name" required>
+          </label>
+          <label>Email
+            <input type="email" name="_replyto" required>
+          </label>
+          <label>Message
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+  <!-- ═════════ FIN SECTION CONTACT ═════════ -->
+
+
+</main>
+<!-- ═════════════════ FIN DU CONTENU PRINCIPAL ═════════════════ -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     F. PIED DE PAGE
+     ═══════════════════════════════════════════════════════════════════ -->
+<footer>Portfolio réalisé par Elzo Menu</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     G. POP-UP DE PROJET
+        Fenêtre cachée par défaut. Le JavaScript la remplit avec le
+        nom, la description et le bouton du projet sur lequel on clique.
+     ═══════════════════════════════════════════════════════════════════ -->
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+
+    <!-- ─── Bandeau du haut : retour, catégorie, statut, titre, technologies ─── -->
+    <div class="modal-hero">
+      <button class="modal-close" id="modal-close" aria-label="Fermer">✕</button>
+      <button class="modal-back" id="modal-back">← Retour aux réalisations</button>
+      <div class="modal-meta">
+        <span class="cat-tag" id="modal-tag"></span>
+        <span class="modal-status" id="modal-status" style="display:none"></span>
+      </div>
+      <h3 id="modal-title"></h3>
+      <div class="modal-engine" id="modal-engine"></div>
+      <div class="pills" id="modal-pills"></div>
+    </div>
+
+    <!-- ─── Corps : sections remplies automatiquement depuis la carte ─── -->
+    <div class="modal-body">
+      <div id="modal-sections"></div>
+      <div class="modal-actions">
+        <div class="project-links">
+          <a href="#" target="_blank" rel="noopener" class="project-link" id="modal-link">Voir le projet</a>
+          <a href="#" target="_blank" rel="noopener" class="project-link secondary" id="modal-link2" style="display:none"></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     H. CURSEUR PERSONNALISÉ
+        Deux éléments qui suivent la souris (piloté par le JavaScript)
+     ═══════════════════════════════════════════════════════════════════ -->
+<div id="cursor-ring" aria-hidden="true"></div>
+<!-- Points de traînée (6, générés une seule fois, réutilisés en boucle) -->
+<div class="cursor-trail" data-trail="0" aria-hidden="true"></div>
+<div class="cursor-trail" data-trail="1" aria-hidden="true"></div>
+<div class="cursor-trail" data-trail="2" aria-hidden="true"></div>
+<div class="cursor-trail" data-trail="3" aria-hidden="true"></div>
+<div class="cursor-trail" data-trail="4" aria-hidden="true"></div>
+<div class="cursor-trail" data-trail="5" aria-hidden="true"></div>
+<div id="cursor-dot" aria-hidden="true"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     3. JAVASCRIPT : le "cerveau" du site
+        Gère les animations et les filtres de projets
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+
+  /* ─────────────────────────────────────────────
+     RÉGLAGES DE DÉPART
+     (respect du choix "réduire les animations" de l'utilisateur)
+     ───────────────────────────────────────────── */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var boot = document.getElementById('boot');
+
+
+  /* ─────────────────────────────────────────────
+     1) ÉCRAN DE CHARGEMENT
+        Lance l'animation de disparition puis cache l'écran
+     ───────────────────────────────────────────── */
+  if(reduced){
+    boot.classList.add('hidden');
+  } else {
+    setTimeout(function(){ boot.classList.add('collapse'); }, 30);
+    boot.addEventListener('animationend', function(e){
+      if(e.animationName === 'bootOut'){ boot.classList.add('hidden'); }
+    });
+  }
+
+
+  /* ─────────────────────────────────────────────
+     1bis) PROGRESSION DE L'ANNÉE EN COURS (frise du parcours)
+        Calcule le % de temps écoulé entre data-start et data-end
+        de l'étape ".in-progress", et remplit le rond + la barre.
+     ───────────────────────────────────────────── */
+  (function(){
+    var step = document.querySelector('.tstep.in-progress');
+    if(!step) return;
+    var start = new Date(step.dataset.start);
+    var end = new Date(step.dataset.end);
+    var now = new Date();
+    var ratio = (now - start) / (end - start);
+    ratio = Math.max(0, Math.min(1, ratio));   // on force entre 0 et 1 (0% avant le début, 100% après la fin)
+    var percent = Math.round(ratio * 100);
+
+    step.style.setProperty('--progress', ratio);
+    var fill = step.querySelector('.progress-fill');
+    if(fill){ fill.style.width = percent + '%'; }
+    var label = step.querySelector('.when-progress-label');
+    if(label){ label.textContent = '· ' + percent + '% écoulés'; }
+  })();
+
+
+  /* ─────────────────────────────────────────────
+     2) BARRE DE PROGRESSION
+        Calcule le % de page déjà scrollée et remplit la barre jaune
+     ───────────────────────────────────────────── */
+  var progress = document.getElementById('progress');
+  function updateProgress(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop;
+    var height = h.scrollHeight - h.clientHeight;
+    progress.style.width = (height > 0 ? (scrolled/height*100) : 0) + '%';
+  }
+  document.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+
+
+  /* ─────────────────────────────────────────────
+     3) APPARITION AU DÉFILEMENT
+        Chaque élément ".reveal" apparaît quand il entre dans l'écran
+     ───────────────────────────────────────────── */
+  var reveals = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.15});
+    reveals.forEach(function(r){ io.observe(r); });
+  } else {
+    // Vieux navigateurs : on affiche tout directement
+    reveals.forEach(function(r){ r.classList.add('in'); });
+  }
+
+
+  /* ─────────────────────────────────────────────
+     4) FILTRES DE PROJETS
+        Affiche/cache les projets selon la catégorie choisie
+     ───────────────────────────────────────────── */
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var projectCards = document.querySelectorAll('.project');
+
+  // Les cadres "Rien ici pour l'instant" (un par catégorie)
+  var emptyStates = document.querySelectorAll('.empty-state');
+
+  // Fonction qui applique un filtre (all / scolaire / pro / perso)
+  function applyFilter(cat){
+    filterBtns.forEach(function(b){ b.classList.toggle('active', b.dataset.filter === cat); });
+
+    // 1) Affiche/cache les cartes de projet selon la catégorie choisie
+    projectCards.forEach(function(p){
+      var show = (cat === 'all') || (p.dataset.cat === cat);
+      p.classList.toggle('hide', !show);
+    });
+
+    // 2) Affiche le cadre vide UNIQUEMENT si la catégorie choisie n'a aucun projet
+    emptyStates.forEach(function(box){
+      var boxCat = box.dataset.empty;
+      var count = document.querySelectorAll('.project[data-cat="' + boxCat + '"]').length;
+      box.classList.toggle('show', cat === boxCat && count === 0);
+    });
+  }
+
+  // Clic sur les boutons de filtre de la section Projets
+  filterBtns.forEach(function(b){ b.addEventListener('click', function(){ applyFilter(b.dataset.filter); }); });
+
+  // Clic sur les liens du sous-menu "Projets" dans la navigation
+  document.querySelectorAll('.sub-links a[data-filter]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      applyFilter(a.dataset.filter);
+      document.getElementById('projets').scrollIntoView({behavior: reduced ? 'auto':'smooth'});
+    });
+  });
+
+
+  /* ─────────────────────────────────────────────
+     5) FICHE PROJET DÉTAILLÉE
+        Au clic sur une carte, on construit la fiche à partir de :
+          - la carte elle-même (titre, catégorie, description, technos)
+          - le bloc caché <div class="project-details"> (sections en plus)
+        Les sections vides ne s'affichent pas.
+     ───────────────────────────────────────────── */
+  var modal = document.getElementById('modal');
+  var mTag = document.getElementById('modal-tag');
+  var mStatus = document.getElementById('modal-status');
+  var mTitle = document.getElementById('modal-title');
+  var mEngine = document.getElementById('modal-engine');
+  var mPills = document.getElementById('modal-pills');
+  var mSections = document.getElementById('modal-sections');
+  var mLink = document.getElementById('modal-link');
+  var mLink2 = document.getElementById('modal-link2');
+  var lastFocus = null;
+
+  // Crée un élément <section> de la fiche avec un titre
+  function makeSection(title, contentNode){
+    var sec = document.createElement('div');
+    sec.className = 'modal-section';
+    var h = document.createElement('h4');
+    h.textContent = title;
+    sec.appendChild(h);
+    sec.appendChild(contentNode);
+    return sec;
+  }
+
+  // Ouvre la fiche avec les infos de la carte cliquée
+  function openModal(card){
+    lastFocus = document.activeElement;
+    var tag = card.querySelector('.cat-tag');
+    mTag.textContent = tag.textContent;
+    mTag.className = 'cat-tag ' + card.dataset.cat;
+    mTitle.textContent = card.querySelector('h3').textContent;
+    mEngine.textContent = card.querySelector('.engine').textContent;
+    mPills.innerHTML = card.querySelector('.pills').innerHTML;
+
+    // Statut (ex: "En cours", "Terminé") : lu dans data-status de la carte
+    if(card.dataset.status){
+      mStatus.textContent = card.dataset.status;
+      mStatus.style.display = '';
+    } else {
+      mStatus.style.display = 'none';
+    }
+
+    // --- Corps de la fiche ---
+    mSections.innerHTML = '';
+
+    // Médias (vidéos + images) du bloc caché, affichés en haut
+    var details = card.querySelector('.project-details');
+    if(details){
+      var videos = details.querySelectorAll('video');
+      videos.forEach(function(v){
+        var clone = v.cloneNode(true);
+        clone.className = 'modal-video';
+        clone.setAttribute('controls','');
+        mSections.appendChild(clone);
+      });
+      // Vidéos YouTube : écrites comme <a data-youtube-card href="...">
+      // Affichées comme une carte cliquable qui ouvre YouTube dans un nouvel onglet.
+      // (l'intégration directe en <iframe> échoue souvent : beaucoup de créateurs
+      // désactivent la lecture intégrée sur d'autres sites, ce qui donne l'erreur 153)
+      var yts = details.querySelectorAll('a[data-youtube-card]');
+      yts.forEach(function(a){
+        var card = document.createElement('a');
+        card.className = 'modal-yt-card';
+        card.href = a.getAttribute('href');
+        card.target = '_blank';
+        card.rel = 'noopener';
+        card.innerHTML =
+          '<span class="yt-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>' +
+          '<span class="yt-text"><strong>' + (a.dataset.ytLabel || 'Voir la vidéo') + '</strong><span>Ouvrir sur YouTube</span></span>';
+        mSections.appendChild(card);
+      });
+    }
+
+    // Description courte de la carte
+    var descNode = document.createElement('p');
+    descNode.textContent = card.querySelector('.desc').textContent;
+    mSections.appendChild(makeSection('Présentation', descNode));
+
+    // Sections optionnelles écrites dans le bloc caché : <section data-title="...">
+    if(details){
+      details.querySelectorAll('section[data-title]').forEach(function(sec){
+        if(!sec.textContent.trim()) return;         // section vide : on saute
+        var wrap = document.createElement('div');
+        wrap.innerHTML = sec.innerHTML;
+        mSections.appendChild(makeSection(sec.dataset.title, wrap));
+      });
+
+      // Galerie d'images
+      var imgs = details.querySelectorAll('img');
+      if(imgs.length){
+        var gal = document.createElement('div');
+        gal.className = 'modal-gallery';
+        imgs.forEach(function(im){ gal.appendChild(im.cloneNode(true)); });
+        mSections.appendChild(makeSection('Aperçu', gal));
+      }
+    }
+
+    // --- Boutons ---
+    var allLinks = card.querySelectorAll('.project-link');
+    var link = allLinks[0];
+    var href = link ? link.getAttribute('href') : '';
+    if(!link){
+      // Carte sans aucun bouton (ex: projet sous confidentialité) : pas de lien à afficher
+      mLink.style.display = 'none';
+    } else if(!href || href === '#' || href.indexOf('ton-lien-ici') !== -1){
+      mLink.style.display = '';
+      mLink.classList.add('disabled');
+      mLink.removeAttribute('href');
+      mLink.textContent = 'Lien bientôt disponible';
+    } else {
+      mLink.style.display = '';
+      mLink.classList.remove('disabled');
+      mLink.setAttribute('href', href);
+      mLink.textContent = 'Voir le projet';
+    }
+    var link2 = allLinks[1];
+    if(link2){
+      mLink2.setAttribute('href', link2.getAttribute('href'));
+      mLink2.textContent = link2.textContent;
+      mLink2.style.display = '';
+    } else {
+      mLink2.style.display = 'none';
+    }
+
+    modal.classList.add('open');
+    document.body.classList.add('modal-open');
+    modal.scrollTop = 0;
+    document.getElementById('modal-close').focus();
+  }
+
+  // Ferme la fiche (et arrête les vidéos éventuelles)
+  function closeModal(){
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    mSections.querySelectorAll('video').forEach(function(v){ v.pause(); });
+    if(lastFocus && lastFocus.focus){ lastFocus.focus(); }
+  }
+
+  // Clic sur une carte de projet → ouvre la fiche
+  // (sauf si on clique directement sur un bouton-lien de la carte)
+  projectCards.forEach(function(card){
+    card.addEventListener('click', function(e){
+      if(e.target.closest('.project-link')) return;
+      openModal(card);
+    });
+  });
+
+  // Fermer : bouton ✕, "Retour", clic en dehors de la fiche, ou touche Échap
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-back').addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target === modal){ closeModal(); } });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('open')){ closeModal(); } });
+
+
+  /* ─────────────────────────────────────────────
+     6) CURSEUR PERSONNALISÉ
+        - Actif seulement avec une vraie souris (pas tactile)
+        - Désactivé si l'utilisateur a réduit les animations
+        - Le point suit la souris, le carré suit avec un léger retard
+        - Le carré grossit sur les éléments cliquables
+     ───────────────────────────────────────────── */
+  var canHover = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if(canHover && !reduced){
+    var dot = document.getElementById('cursor-dot');
+    var ring = document.getElementById('cursor-ring');
+    var trailDots = document.querySelectorAll('.cursor-trail');
+    var mx = 0, my = 0, rx = 0, ry = 0, started = false;
+    // Historique des positions récentes de la souris, pour dessiner la traînée
+    var history = [];
+    var HISTORY_LENGTH = 90;   // nombre de positions mémorisées (≈ 1,5s à 60fps)
+    document.body.classList.add('has-cursor');
+
+    document.addEventListener('mousemove', function(e){
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+      if(!started){ rx = mx; ry = my; started = true; document.body.classList.add('cursor-on'); }
+    });
+    // Le curseur disparaît quand la souris quitte la fenêtre
+    document.addEventListener('mouseleave', function(){ document.body.classList.remove('cursor-on'); });
+    document.addEventListener('mouseenter', function(){ if(started){ document.body.classList.add('cursor-on'); } });
+
+    // Animation fluide du losange (rattrape le point avec un léger retard)
+    // + mise à jour de la traînée de points, à chaque image
+    function follow(){
+      rx += (mx - rx) * 0.22;
+      ry += (my - ry) * 0.22;
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+
+      // On mémorise la position actuelle, puis on ne garde que les N dernières
+      history.push({x: mx, y: my});
+      if(history.length > HISTORY_LENGTH){ history.shift(); }
+
+      // Chaque point de traînée reprend une position un peu plus ancienne que le précédent,
+      // et devient de plus en plus petit / transparent en s'éloignant du curseur
+      trailDots.forEach(function(el, i){
+        var back = (i + 1) * 12;                       // écart entre chaque point (en nombre de positions)
+        var idx = history.length - 1 - back;
+        var p = history[idx < 0 ? 0 : idx];
+        if(!p) return;
+        var fade = 1 - (i + 1) / (trailDots.length + 1); // 1 = proche du curseur, 0 = loin
+        el.style.transform = 'translate(' + p.x + 'px,' + p.y + 'px) scale(' + (0.35 + fade * 0.65) + ')';
+        el.style.opacity = (fade * 0.55).toFixed(2);
+      });
+
+      requestAnimationFrame(follow);
+    }
+    follow();
+
+    // Le losange grossit sur les éléments cliquables
+    var clickable = 'a, button, .project, .filter-btn, .card.tool';
+    document.addEventListener('mouseover', function(e){
+      ring.classList.toggle('hover', !!e.target.closest(clickable));
+    });
+    // Effet "appui" au clic
+    document.addEventListener('mousedown', function(){ ring.classList.add('down'); });
+    document.addEventListener('mouseup', function(){ ring.classList.remove('down'); });
+  }
+
+})();
+</script>
+<!-- ═════════════════ FIN DU JAVASCRIPT ═════════════════ -->
+
+</body>
+</html>
+<!-- ═════════════════ FIN DU FICHIER ═════════════════ -->
