@@ -384,6 +384,76 @@
 
   /* Carte de droite : barres de compétences */
   .sheet-skills{ padding:32px; }
+
+  /* ── Compétences par catégorie ── */
+  .skills-intro{ color:var(--text-muted); max-width:70ch; margin-bottom:22px; }
+  .skills-wrap{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; }
+  .skill-cat{ background:rgba(255,255,255,0.04); border:2px solid rgba(224,168,57,0.35); border-radius:14px; padding:18px; }
+  .skill-cat-head{ margin-bottom:14px; }
+  .skill-cat-head h3{ font-size:18px; color:var(--accent); margin:0; }
+  .skill-cat-head span{ font-size:13px; color:var(--text-muted); }
+  .skill-tiles{ display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:10px; }
+  .skill-tile{ display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.06); border-radius:10px; padding:8px 10px; }
+  .skill-tile .logo{ flex:0 0 34px; height:34px; border-radius:8px; display:grid; place-items:center; font:700 13px/1 'Space Mono',monospace; }
+  .skill-tile .tname{ font-size:13.5px; font-weight:600; color:var(--text); line-height:1.2; }
+
+  /* ── Vues (accueil / SIO / Game Design) et portes ── */
+  .view[hidden]{ display:none; }
+  .view-top{ padding:34px 0 6px; }
+  .view-top h2{ font-size:clamp(28px,4vw,42px); margin:12px 0 6px; }
+  .view-top p{ color:var(--text-muted); max-width:62ch; }
+  .back-link{ color:var(--accent); text-decoration:none; font-weight:700; }
+  .back-link:hover{ text-decoration:underline; }
+  .switch{ text-align:center; margin:40px 0 10px; }
+  .doors{ text-align:center; padding:64px 0 40px; }
+  .doors h2{ margin:8px 0 0; font-size:clamp(26px,4vw,38px); }
+  .doors-row{ display:flex; justify-content:center; flex-wrap:wrap; gap:60px; margin-top:44px; }
+  .door{ --c:var(--sky); position:relative; width:272px; height:272px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:30px; box-sizing:border-box; text-decoration:none; color:var(--text);
+    background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.10), rgba(16,27,21,0.95) 70%);
+    transition: transform .35s ease, box-shadow .35s ease; }
+  .door::before{ content:''; position:absolute; inset:-7px; border-radius:50%; z-index:-1;
+    background: conic-gradient(from 0deg, var(--c), transparent 30%, var(--c) 55%, transparent 80%, var(--c));
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+    animation: doorspin 10s linear infinite; }
+  .door svg{ width:58px; height:58px; margin-bottom:4px; }
+  .door strong{ font-size:21px; line-height:1.15; }
+  .door .dsub{ font-size:13px; color:var(--text-muted); line-height:1.35; }
+  .door .enter{ margin-top:8px; font-size:13px; font-weight:700; color:var(--c); opacity:.8; transition:opacity .3s, letter-spacing .3s; }
+  .door:hover, .door:focus-visible{ transform: translateY(-10px) scale(1.04); box-shadow:0 0 55px -4px var(--c); }
+  .door:hover .enter, .door:focus-visible .enter{ opacity:1; letter-spacing:.06em; }
+  @keyframes doorspin{ to{ transform:rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce){ .door::before{ animation:none; } }
+  /* ── Miniature de projet ── */
+  .project-thumb{ display:block; width:100%; height:170px; object-fit:cover; border-radius:10px; margin-bottom:14px; background:#0b1220; }
+  .level-btn{
+    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:13.5px;
+    background:var(--bg-deep); color:var(--text-muted); border:2px solid var(--border);
+    border-radius:20px; padding:9px 18px; cursor:pointer; transition: all .15s ease;
+  }
+  .level-btn:hover{ border-color:var(--leaf); color:var(--text); }
+  .level-btn.active{ background:var(--accent); border-color:var(--accent-dark); color:var(--bg-deep); }
+  .level-hidden{ display:none !important; }
+  .table-wrap{ overflow-x:auto; }
+  .synth{ border-collapse:collapse; width:100%; min-width:520px; }
+  .synth th, .synth td{ border:1px solid rgba(224,168,57,0.3); padding:11px 14px; text-align:left; font-size:14.5px; }
+  .synth thead th{ background:rgba(224,168,57,0.14); color:var(--accent); }
+  .synth tbody th{ font-weight:600; color:var(--text); }
+  .synth td{ text-align:center; font-size:18px; }
+  .synth-legend{ margin-top:10px; font-size:13px; color:var(--text-muted); }
+  .veille-card{ padding:26px 30px; }
+  .veille-card p{ margin:0 0 14px; color:var(--ink); line-height:1.6; }
+  .veille-card .pills{ margin-bottom:16px; }
+  .veille-card .veille-comp{ font-size:14px; color:var(--ink); opacity:.8; font-style:italic; margin-bottom:18px; }
+  .hero[hidden]{ display:none; }
+  .hero .stage-callout{ margin-bottom:26px; }
+  html, body{ overflow-x:clip; }
+  /* ── Curseur pixel art (flèche dorée ; verte sur les éléments cliquables) ── */
+  @media (hover:hover) and (pointer:fine){
+    html, body{ cursor:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2224%22%20height=%2232%22%20viewBox=%220%200%2012%2016%22%20shape-rendering=%22crispEdges%22%3E%3Crect%20x=%220%22%20y=%220%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%221%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%221%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%222%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%222%22%20width=%221%22%20height=%221%22%20fill=%22%23f6d98a%22/%3E%3Crect%20x=%222%22%20y=%222%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%227%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%227%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%228%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%227%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%228%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%229%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%227%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%228%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%229%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%2210%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%224%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%224%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%227%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%224%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%227%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%226%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%227%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%228%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2215%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%226%22%20y=%2215%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%227%22%20y=%2215%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3C/svg%3E") 0 0, auto; }
+    a, button, summary, .project, .filter-btn, .level-btn, .door, .card.tool{ cursor:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2224%22%20height=%2232%22%20viewBox=%220%200%2012%2016%22%20shape-rendering=%22crispEdges%22%3E%3Crect%20x=%220%22%20y=%220%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%221%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%221%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%222%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%222%22%20width=%221%22%20height=%221%22%20fill=%22%23bfe0b0%22/%3E%3Crect%20x=%222%22%20y=%222%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%227%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%227%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%228%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%227%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%228%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%229%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%227%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%228%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%229%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%2210%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%224%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%224%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%227%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%224%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%227%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%226%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%227%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%228%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2215%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%226%22%20y=%2215%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%227%22%20y=%2215%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3C/svg%3E") 0 0, pointer; }
+    input, textarea{ cursor:text; }
+  }
   .skill-row{ margin-bottom:20px; }
   .skill-row:last-child{ margin-bottom:0; }
   .skill-top{ display:flex; justify-content:space-between; font-size:14px; color:var(--ink); margin-bottom:8px; font-weight:700; }
@@ -403,6 +473,10 @@
   }
   .stage-callout strong{ font-size:14.5px; color:var(--ink); }
   .stage-callout span{ font-size:13px; color:var(--ink); opacity:.75; }
+  /* Dans le hero (fond sombre) : texte clair pour rester lisible */
+  .hero .stage-callout{ background:rgba(224,168,57,0.14); border-color:var(--accent); }
+  .hero .stage-callout strong{ color:var(--accent); font-size:16px; }
+  .hero .stage-callout span{ color:var(--text); opacity:.95; font-size:14.5px; }
 
   /* ─────────────────────────────────────────────
      SECTION PARCOURS : frise chronologique
@@ -688,70 +762,7 @@
   }
 
 
-  /* ─────────────────────────────────────────────
-     CURSEUR PERSONNALISÉ
-     Un anneau lumineux doré, avec un halo doux, suit la souris
-     avec un léger retard. Un petit point clair marque la position
-     exacte. Une traînée de particules dorées s'estompe derrière
-     le curseur, façon poussière d'étoile — discrète, jamais gênante.
-     Actif uniquement avec une vraie souris.
-     ───────────────────────────────────────────── */
-  @media (hover:hover) and (pointer:fine){
-    body.has-cursor, body.has-cursor a, body.has-cursor button, body.has-cursor .project{ cursor:none; }
-
-    #cursor-dot, #cursor-ring, .cursor-trail{
-      position:fixed; top:0; left:0; z-index:9999; pointer-events:none;
-      opacity:0; transition: opacity .25s ease;
-    }
-    body.has-cursor.cursor-on #cursor-dot,
-    body.has-cursor.cursor-on #cursor-ring,
-    body.has-cursor.cursor-on .cursor-trail{ opacity:1; }
-
-    /* Point central : marque la position exacte de la souris */
-    #cursor-dot{
-      width:6px; height:6px; margin:-3px 0 0 -3px; border-radius:50%;
-      background:var(--text); box-shadow:0 0 6px rgba(238,242,230,0.7);
-    }
-
-    /* Anneau doré avec halo lumineux : suit avec un léger retard */
-    #cursor-ring{
-      position:fixed; width:34px; height:34px; margin:-17px 0 0 -17px; border-radius:50%;
-      border:1.5px solid var(--accent);
-      box-shadow:
-        0 0 0 1px rgba(224,168,57,0.15),
-        0 0 16px 2px rgba(224,168,57,0.35),
-        inset 0 0 10px rgba(224,168,57,0.15);
-      transition: opacity .25s ease, width .25s cubic-bezier(.2,.8,.3,1), height .25s cubic-bezier(.2,.8,.3,1),
-                  margin .25s cubic-bezier(.2,.8,.3,1), border-color .25s ease, box-shadow .25s ease;
-    }
-    /* Petit reflet façon "gemme" en haut de l'anneau, pour un rendu moins plat */
-    #cursor-ring::after{
-      content:""; position:absolute; top:5px; left:11px; width:8px; height:3px; border-radius:50%;
-      background:rgba(255,255,255,0.55); filter:blur(.5px);
-    }
-    #cursor-ring.hover{
-      width:54px; height:54px; margin:-27px 0 0 -27px;
-      border-color:var(--leaf);
-      box-shadow:
-        0 0 0 1px rgba(127,174,111,0.18),
-        0 0 22px 4px rgba(127,174,111,0.4),
-        inset 0 0 14px rgba(127,174,111,0.18);
-    }
-    #cursor-ring.down{
-      width:26px; height:26px; margin:-13px 0 0 -13px;
-      box-shadow:
-        0 0 0 1px rgba(224,168,57,0.25),
-        0 0 20px 5px rgba(224,168,57,0.5),
-        inset 0 0 8px rgba(224,168,57,0.25);
-    }
-
-    /* Traînée : petites particules dorées qui rétrécissent et s'effacent */
-    .cursor-trail{
-      width:4px; height:4px; margin:-2px 0 0 -2px; border-radius:50%;
-      background:radial-gradient(circle, var(--accent) 0%, rgba(224,168,57,0) 70%);
-    }
-  }
-  @media (hover:none), (pointer:coarse){ #cursor-dot, #cursor-ring, .cursor-trail{ display:none; } }
+  
 
 </style>
 </head>
@@ -793,29 +804,16 @@
   <div class="nav-inner">
 
     <!-- ─── Logo (EM + nom) ─── -->
-    <a href="#top" class="logo">
+    <a href="#home" class="logo">
       <span class="logo-mark">EM</span>
       <span class="logo-name">Elzo Menu</span>
     </a>
 
     <!-- ─── Liste des liens du menu ─── -->
     <ul class="nav-links">
-      <li><a href="#top">Accueil</a></li>
-      <li><a href="#apropos">À propos</a></li>
-      <li><a href="#parcours">Parcours</a></li>
-      <li><a href="#competences">Compétences</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-
-      <!-- Lien "Projets" avec sous-menu déroulant au survol -->
-      <li class="has-sub">
-        <a href="#projets">Projets</a>
-        <ul class="sub-links">
-          <li><a href="#projets" data-filter="scolaire">Projets scolaires</a></li>
-          <li><a href="#projets" data-filter="pro">Projets professionnels</a></li>
-          <li><a href="#projets" data-filter="perso">Projets personnels</a></li>
-        </ul>
-      </li>
-
+      <li><a href="#home">Accueil</a></li>
+      <li><a href="#sio">Portfolio SIO</a></li>
+      <li><a href="#game">Portfolio GameDesign</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -864,18 +862,22 @@
       <div class="training-sub mono">1ʳᵉ année BTS SIO, option SLAM (CNED)</div>
 
       <!-- Badge "disponible" avec point clignotant -->
-      <div class="status-badge"><span class="status-dot"></span>Ouvert aux stages & alternances</div>
+      <div class="stage-callout" style="max-width:520px;margin-top:18px">
+        <strong>🔎 Je recherche un stage</strong>
+        <span>Spécialité SLAM (développement) · 4 à 5 semaines · entre mai et août 2027 · présentiel, Hauts-de-France</span>
+      </div>
 
       <!-- Titre principal -->
       <h1 class="title">Je conçois des niveaux qu'on a envie de rejouer.</h1>
 
       <!-- Petit texte de présentation -->
-      <p class="pitch">Salut ! Née en 2008, basé dans le 60, je suis en cours de formation pour me spécialiser dans le développement informatique.je suis intéressé par le jeu vidéo, la VR & le jeu de société.</p>
+      <p class="pitch">Salut ! Je me forme depuis l'Oise (60) pour me spécialiser dans le développement informatique. Le jeu vidéo, la VR et les jeux de société sont mes principaux centres d'intérêt.</p>
 
       <!-- Boutons d'action -->
       <div class="hero-cta">
-        <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+        <a href="#doors" class="btn btn-primary">Choisir un portfolio</a>
         <a href="#contact" class="btn btn-ghost">Me contacter</a>
+        <a href="Elzo_Menu_CV.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Voir le CV</a>
         <a href="Elzo_Menu_CV.pdf" class="btn btn-ghost" download>Télécharger le CV</a>
       </div>
     </div>
@@ -910,12 +912,21 @@
      E. CONTENU PRINCIPAL : toutes les sections du site
      ═══════════════════════════════════════════════════════════════════ -->
 <main class="wrap">
-
-
-  <!-- ═════════════════════════════════════════════════════════════════
-       SECTION 1 : À PROPOS
-       Bio à gauche, barres de niveau à droite
-       ═════════════════════════════════════════════════════════════════ -->
+<div class="view" id="view-home" data-view="home">
+  <section id="doors" class="doors">
+    <div class="eyebrow-txt" style="color:var(--accent)">Deux univers, un seul développeur</div>
+    <h2>Quel portfolio veux-tu visiter ?</h2>
+    <div class="doors-row">
+      <a href="#sio" class="door reveal" style="--c:var(--sky)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--sky)"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg>
+        <strong>BTS SIO · SLAM</strong><span class="dsub">Développement, bases de données, projets scolaires</span><span class="enter">Entrer →</span>
+      </a>
+      <a href="#game" class="door reveal" style="--c:var(--accent)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 10v5M4.5 12.5h5M15.5 11h.01M18 14h.01"/></svg>
+        <strong>Game & Level Design</strong><span class="dsub">Serveurs Minecraft, jeux, donjons, quêtes</span><span class="enter">Entrer →</span>
+      </a>
+    </div>
+  </section>
   <section id="apropos">
 
     <!-- ─── En-tête de la section (icône + titre) ─── -->
@@ -937,12 +948,6 @@
         <p><strong>Formation actuelle :</strong> BTS SIO option SLAM (Solutions Logicielles et Applications Métiers), 1ʳᵉ année, à distance via le CNED.</p>
         <p><strong>Objectif :</strong> évoluer vers un poste de Game Designer / Level Designer, en m'appuyant sur mes bases en développement pour prototyper et itérer rapidement sur mes idées.</p>
         <p>Je m'intéresse particulièrement à la conception d'espaces de jeu : rythme d'exploration, lecture visuelle d'un niveau, et équilibrage entre difficulté et plaisir de jeu.</p>
-
-        <!-- Encadré recherche de stage -->
-        <div class="stage-callout">
-          <strong>🔎 Je recherche un stage</strong>
-          <span>Spécialité SLAM (développement) · 4 à 5 semaines · entre mai et août 2027</span>
-        </div>
       </div>
 
       <!-- Carte de droite : barres de compétences
@@ -976,13 +981,13 @@
       </div>
     </div>
   </section>
-  <!-- ═════════ FIN SECTION À PROPOS ═════════ -->
-
-
-  <!-- ═════════════════════════════════════════════════════════════════
-       SECTION 2 : PARCOURS
-       Frise chronologique de ta formation
-       ═════════════════════════════════════════════════════════════════ -->
+</div>
+<div class="view" id="view-sio" data-view="sio" hidden>
+  <div class="view-top">
+    <a href="#home" class="back-link">← Retour à l'accueil</a>
+    <h2>Portfolio BTS SIO · option SLAM</h2>
+    <p>Mon parcours, mes compétences et tous mes projets scolaires, à filtrer par niveau.</p>
+  </div>
   <section id="parcours">
 
     <!-- ─── En-tête de la section ─── -->
@@ -999,11 +1004,18 @@
     <!-- ─── Frise chronologique ─── -->
     <div class="timeline">
 
-      <!-- Étape 1 : Baccalauréat -->
-      <div class="tstep reveal">
-        <div class="when">2026</div>
-        <h3>Baccalauréat</h3>
-        <p>Obtention du baccalauréat, avec un intérêt déjà marqué pour la conception de jeux et les mécaniques de gameplay.</p>
+      <!-- Étape 4 : Spécialisation (à venir) -->
+      <div class="tstep reveal future" style="transition-delay:.24s">
+        <div class="when">Prochaine étape</div>
+        <h3>Spécialisation Game Design / Level Design</h3>
+        <p>Approfondir la conception de niveaux à travers des formations ou projets collaboratifs, et construire un portfolio de niveaux jouables.</p>
+      </div>
+
+      <!-- Étape 3 : BTS 2ème année (à venir → classe "future" = rond vide) -->
+      <div class="tstep reveal future" style="transition-delay:.16s">
+        <div class="when">2027 à 2028</div>
+        <h3>BTS SIO SLAM, 2ᵉ année (CNED)</h3>
+        <p>Poursuite de la formation, avec l'objectif d'orienter les projets vers le développement de jeu et la conception de niveaux.</p>
       </div>
 
       <!-- Étape 2 : BTS 1ère année (EN COURS)
@@ -1017,20 +1029,12 @@
         <div class="progress-track"><div class="progress-fill"></div></div>
       </div>
 
-      <!-- Étape 3 : BTS 2ème année (à venir → classe "future" = rond vide) -->
-      <div class="tstep reveal future" style="transition-delay:.16s">
-        <div class="when">2027 à 2028</div>
-        <h3>BTS SIO SLAM, 2ᵉ année (CNED)</h3>
-        <p>Poursuite de la formation, avec l'objectif d'orienter les projets vers le développement de jeu et la conception de niveaux.</p>
+      <!-- Étape 1 : Baccalauréat -->
+      <div class="tstep reveal">
+        <div class="when">2026</div>
+        <h3>Baccalauréat général (spécialités NSI et SES)</h3>
+        <p><strong>Terminale générale au CNED, épreuves passées dans les Hauts-de-France · Sans mention.</strong> Spécialités Numérique et Sciences Informatiques (NSI) et Sciences Économiques et Sociales (SES). Obtention du baccalauréat, avec un intérêt déjà marqué pour la conception de jeux et les mécaniques de gameplay.</p>
       </div>
-
-      <!-- Étape 4 : Spécialisation (à venir) -->
-      <div class="tstep reveal future" style="transition-delay:.24s">
-        <div class="when">Prochaine étape</div>
-        <h3>Spécialisation Game Design / Level Design</h3>
-        <p>Approfondir la conception de niveaux à travers des formations ou projets collaboratifs, et construire un portfolio de niveaux jouables.</p>
-      </div>
-
     </div>
 
     <!-- ┌──────────────────────────────────────────────────────────────┐
@@ -1043,55 +1047,53 @@
       <p>Ce portfolio s'inscrit dans le bloc de compétences <strong>« Support et mise à disposition de services informatiques »</strong>, visé au cours de la formation :</p>
       <ul>
         <li>Gérer le patrimoine informatique</li>
-        <li>Répondre aux incidents et demandes des utilisateurs</li>
-        <li>Développer la présence en ligne de l'organisation</li>
+        <li>Répondre aux incidents et aux demandes d'assistance et d'évolution</li>
         <li>Travailler en mode projet</li>
+        <li>Mettre à disposition des utilisateurs un service informatique</li>
+        <li>Organiser son développement professionnel</li>
       </ul>
     </div>
   </section>
-  <!-- ═════════ FIN SECTION PARCOURS ═════════ -->
-
-
-  <!-- ═════════════════════════════════════════════════════════════════
-       SECTION 3 : OUTILS & COMPÉTENCES
-       Grille des logiciels que tu utilises
-       → Pour ajouter un outil : copie une ligne "card reveal tool"
-       ═════════════════════════════════════════════════════════════════ -->
   <section id="competences">
-
-    <!-- ─── En-tête de la section ─── -->
     <div class="section-head reveal" style="--zone:var(--accent)">
       <div class="level-flag" style="--zone:var(--accent)">
         <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><path d="M14 2 4 14h6l-1 8 11-13h-6l1-7z"/></svg>
       </div>
       <div>
         <div class="eyebrow-txt" style="color:var(--accent)">Boîte à outils</div>
-        <h2>Outils & compétences</h2>
+        <h2>Compétences techniques</h2>
       </div>
     </div>
-
-    <!-- ─── Grille d'outils (4 colonnes) ─── -->
-    <div class="grid-4">
-      <div class="card reveal tool"><div class="name">Visual Studio Code</div><div class="role">Logiciel de programmation</div></div>
-      <div class="card reveal tool" style="transition-delay:.1s"><div class="name">Godot</div><div class="role">Petits jeux 2D</div></div>
-      <div class="card reveal tool" style="transition-delay:.15s"><div class="name">WorldPainter</div><div class="role">Logiciel de création de map</div></div>
-      <div class="card reveal tool" style="transition-delay:.2s"><div class="name">BlockBench</div><div class="role">Logiciel de modélisation 3D</div></div>
-      <div class="card reveal tool" style="transition-delay:.25s"><div class="name">Canva</div><div class="role">Logiciel de création de design</div></div>
-      <div class="card reveal tool" style="transition-delay:.3s"><div class="name">Notion</div><div class="role">Site d'organisation en équipe</div></div>
-      <div class="card reveal tool" style="transition-delay:.35s"><div class="name">CapCut</div><div class="role">Montage vidéo</div></div>
+    <p class="skills-intro reveal">Compétences abordées au cours du BTS SIO option SLAM, classées par catégorie. Les logos sont des pastilles aux couleurs de chaque technologie.</p>
+    <div class="skills-wrap">
+    <div class="skill-cat">
+      <div class="skill-cat-head"><h3>Développement d'applications</h3><span>Langages et environnements</span></div>
+      <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#3776ab;color:#fff">Py</span><span class="tname">Python</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#777bb3;color:#fff">PHP</span><span class="tname">PHP</span></div><div class="skill-tile reveal" style="transition-delay:0.1s"><span class="logo" style="background:#e76f00;color:#fff">Jv</span><span class="tname">Java</span></div><div class="skill-tile reveal" style="transition-delay:0.15s"><span class="logo" style="background:#68217a;color:#fff">C#</span><span class="tname">C#</span></div><div class="skill-tile reveal" style="transition-delay:0.2s"><span class="logo" style="background:#007acc;color:#fff">VS</span><span class="tname">Visual Studio Code</span></div></div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-head"><h3>Web</h3><span>Pages et interfaces</span></div>
+      <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#e44d26;color:#fff">5</span><span class="tname">HTML5</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#1572b6;color:#fff">3</span><span class="tname">CSS3</span></div><div class="skill-tile reveal" style="transition-delay:0.1s"><span class="logo" style="background:#f7df1e;color:#222">JS</span><span class="tname">JavaScript</span></div></div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-head"><h3>Bases de données</h3><span>Stockage et requêtes</span></div>
+      <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#336791;color:#fff">SQL</span><span class="tname">SQL</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#00758f;color:#fff">My</span><span class="tname">MySQL</span></div><div class="skill-tile reveal" style="transition-delay:0.1s"><span class="logo" style="background:#6b7a3d;color:#fff">UML</span><span class="tname">Modélisation (UML, MCD)</span></div></div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-head"><h3>Outils & méthodes</h3><span>Travail en équipe</span></div>
+      <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#f05032;color:#fff">Git</span><span class="tname">Git</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#24292e;color:#fff">GH</span><span class="tname">GitHub</span></div><div class="skill-tile reveal" style="transition-delay:0.1s"><span class="logo" style="background:#2e8b57;color:#fff">Ag</span><span class="tname">Méthode Agile</span></div><div class="skill-tile reveal" style="transition-delay:0.15s"><span class="logo" style="background:#111;color:#fff">No</span><span class="tname">Notion</span></div></div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-head"><h3>Systèmes & réseaux</h3><span>Support et services (Bloc 1)</span></div>
+      <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#0078d4;color:#fff">Win</span><span class="tname">Windows</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#222;color:#f5c518">Lx</span><span class="tname">Linux</span></div><div class="skill-tile reveal" style="transition-delay:0.1s"><span class="logo" style="background:#4a6fa5;color:#fff">IP</span><span class="tname">Réseaux TCP/IP</span></div></div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-head"><h3>Cybersécurité</h3><span>Sécuriser les services (Bloc 3)</span></div>
+      <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#7a3b3b;color:#fff">🔒</span><span class="tname">Sécurité des applications</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#3b5a7a;color:#fff">RG</span><span class="tname">RGPD</span></div></div>
+    </div>
+    
     </div>
   </section>
-  <!-- ═════════ FIN SECTION OUTILS & COMPÉTENCES ═════════ -->
-
-
-  <!-- ═════════════════════════════════════════════════════════════════
-       SECTION 4 : CERTIFICATIONS
-       Diplômes obtenus (badge vert "Obtenue")
-       et objectifs futurs (badge jaune "Objectif")
-       ═════════════════════════════════════════════════════════════════ -->
   <section id="certifications">
-
-    <!-- ─── En-tête de la section ─── -->
     <div class="section-head reveal" style="--zone:var(--sky)">
       <div class="level-flag" style="--zone:var(--sky)">
         <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg>
@@ -1101,74 +1103,127 @@
         <h2>Certifications</h2>
       </div>
     </div>
-
-    <!-- ─── Liste des certifications ─── -->
     <div class="certif-list">
-
-      <!-- Certification 1 : PIX (obtenue) -->
       <div class="card reveal certif">
-        <div><div class="name">PIX</div><div class="issuer">Certification des compétences numériques</div></div>
+        <div><div class="name">PIX</div><div class="issuer">Certification des compétences numériques · Niveau Avancé 1 (528 pix) · janvier 2026</div></div>
         <div class="certif-status ok">Obtenue</div>
       </div>
-
-      <!-- Certification 2 : Brevet (obtenue) -->
-      <div class="card reveal certif" style="transition-delay:.05s">
-        <div><div class="name">Brevet des collèges</div><div class="issuer">compétences de base acquises à la fin de la scolarité au collège</div></div>
-        <div class="certif-status ok">Obtenue</div>
-      </div>
-
-      <!-- Certification 3 : RNCP Niveau 6 (objectif) -->
-      <div class="card reveal certif" style="transition-delay:.1s">
-        <div><div class="name">RNCP Niveau 6 (Bac+3/4) – Concepteur de jeux vidéo / Game Designer</div><div class="issuer">Game Designer & concepteur de jeu professionnel</div></div>
-        <div class="certif-status pending">Objectif</div>
-      </div>
-
-      <!-- Certification 4 : RNCP Niveau 7 (objectif) -->
-      <div class="card reveal certif" style="transition-delay:.15s">
-        <div><div class="name">RNCP Niveau 7 (Bac+5) – Lead Game Designer</div><div class="issuer">Axée sur la direction créative, la veille technologique et la gestion d'équipe de conception</div></div>
-        <div class="certif-status pending">Objectif</div>
-      </div>
-
     </div>
   </section>
-  <!-- ═════════ FIN SECTION CERTIFICATIONS ═════════ -->
-
-
-  <!-- ═════════════════════════════════════════════════════════════════
-       SECTION 5 : PROJETS
-       Boutons de filtre + liste des projets
-       Chaque projet a un data-cat : "scolaire", "pro" ou "perso"
-       (c'est ce qui permet au filtre de fonctionner)
-       ═════════════════════════════════════════════════════════════════ -->
-  <section id="projets">
-
-    <!-- ─── En-tête de la section ─── -->
+  <section id="veille">
+    <div class="section-head reveal" style="--zone:var(--sky)">
+      <div class="level-flag" style="--zone:var(--sky)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow-txt" style="color:var(--sky)">Organiser son développement professionnel</div>
+        <h2>Veille technologique</h2>
+      </div>
+    </div>
+    <div class="card reveal veille-card">
+      <p>Ma veille informationnelle et technologique s'appuie sur deux outils : <strong>Feedly</strong>, pour suivre mes sources d'information, et <strong>Pearltrees</strong>, où je classe les liens retenus dans des collections (veille informationnelle et technologique, formation).</p>
+      <div class="pills"><span class="pill">Feedly</span><span class="pill">Pearltrees</span></div>
+      <p class="veille-comp">Compétence du Bloc 1 : Organiser son développement professionnel (outils et stratégies de veille informationnelle).</p>
+      <a href="https://www.pearltrees.com/hyco" target="_blank" rel="noopener" class="btn btn-primary">Voir ma veille sur Pearltrees →</a>
+    </div>
+  </section>
+  <section id="projets-sio">
     <div class="section-head reveal" style="--zone:var(--leaf)">
       <div class="level-flag" style="--zone:var(--leaf)">
         <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg>
       </div>
       <div>
         <div class="eyebrow-txt" style="color:var(--leaf)">Portfolio</div>
-        <h2>Projets</h2>
+        <h2>Projets scolaires</h2>
       </div>
     </div>
-
-    <!-- ─── Boutons de filtre ─── -->
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">Tous</button>
-      <button class="filter-btn" data-filter="scolaire">Projets scolaires</button>
-      <button class="filter-btn" data-filter="pro">Projets professionnels</button>
-      <button class="filter-btn" data-filter="perso">Projets personnels</button>
+    <div class="filters" role="group" aria-label="Filtrer les projets par niveau">
+      <button class="level-btn active" data-level="all">Tous</button>
+      <button class="level-btn" data-level="bts">BTS SIO</button>
+      <button class="level-btn" data-level="seconde">Seconde</button>
     </div>
 
-    <!-- ─── Liste des projets ─── -->
     <div class="projects">
+<div class="card reveal project" data-cat="scolaire" data-level="bts" data-status="En cours · Rendu B1.6 (Pour mon avenir)">
+        <img class="project-thumb" src="images/portfolio-miniature.jpg" alt="Photo de présentation" loading="lazy" style="object-fit:contain;object-position:center;background:#dcdde3">
+        <div class="project-top">
+          <div>
+            <h3>Portfolio professionnel</h3>
+            <div class="engine">HTML/CSS/JavaScript · Site web · Pour mon avenir B1.6</div>
+          </div>
+          <span class="cat-tag scolaire">Scolaire</span>
+        </div>
+        <p class="desc">Site portfolio réalisé dans un cadre scolaire (B1.6) pour présenter mon parcours, mes compétences et mes réalisations. Il se découpe en deux univers : un portfolio BTS SIO et un portfolio Game &amp; Level Design.</p>
+        <div class="pills"><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span></div>
+        <div class="project-details">
+          <section data-title="Cadre de réalisation">
+            <p>Projet scolaire B1.6 « Pour mon avenir » : concevoir un portfolio en ligne pour présenter mon profil, mon parcours et mes productions.</p>
+          </section>
+          <section data-title="Ce que contient le site">
+            <ul>
+              <li>Une page d'accueil avec ma présentation, mon CV et ma recherche de stage</li>
+              <li>Deux portfolios distincts : BTS SIO (SLAM) et Game &amp; Level Design</li>
+              <li>Des fiches détaillées pour chaque réalisation</li>
+              <li>Une zone de contact avec formulaire</li>
+            </ul>
+          </section>
+          <section data-title="Compétences du Bloc 1 mobilisées">
+            <ul>
+              <li>Organiser son développement professionnel : gérer son identité professionnelle et développer son projet professionnel</li>
+            </ul>
+          </section>
+        </div>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
 
+      <div class="card reveal project" data-cat="scolaire" data-level="bts" data-status="Objectif · À réaliser (Atelier professionnel 2)">
+        <div class="project-top">
+          <div>
+            <h3>Atelier 2 : MediaTek 86 — Gestion de personnel &amp; absences</h3>
+            <div class="engine">C# · Application de bureau · Atelier professionnel 2, BTS SIO SLAM</div>
+          </div>
+          <span class="cat-tag scolaire">Objectif</span>
+        </div>
+        <p class="desc">Projet à venir : application de bureau avec interface graphique, développée en C# (.NET) sous Visual Studio 2022. Elle permettrait à une médiathèque de gérer son personnel, son affectation à un service et l'historique des absences et congés, avec une base de données MySQL.</p>
+        <div class="pills"><span class="pill">C#</span><span class="pill">Visual Studio 2022</span><span class="pill">MySQL</span></div>
+        <div class="project-details">
+          <section data-title="Statut">
+            <p>Ce projet n'est pas encore réalisé : c'est un objectif de ma formation. Cette fiche sera complétée une fois l'atelier terminé.</p>
+          </section>
+          <section data-title="Cadre de réalisation">
+            <p>Atelier professionnel 2 du BTS SIO option SLAM, en lien avec la médiathèque MediaTek 86.</p>
+          </section>
+          <section data-title="Fonctionnalités visées">
+            <ul>
+              <li>Gestion centralisée du personnel</li>
+              <li>Affectation à un service spécialisé</li>
+              <li>Historique complet des absences et congés</li>
+              <li>Base de données relationnelle MySQL (environnement local WampServer)</li>
+            </ul>
+          </section>
+          <section data-title="Livrables prévus">
+            <ul>
+              <li>Dépôt GitHub</li>
+              <li>Script SQL de la base de données</li>
+              <li>Documentation technique</li>
+              <li>Kanban de gestion de projet</li>
+              <li>Compte rendu d'atelier</li>
+              <li>Installateur de l'application</li>
+            </ul>
+          </section>
+          <section data-title="Compétences du Bloc 1 visées (à confirmer après l'atelier)">
+            <ul>
+              <li>Travailler en mode projet (planification avec un Kanban)</li>
+              <li>Mettre à disposition des utilisateurs un service informatique (déploiement avec un installateur)</li>
+            </ul>
+          </section>
+        </div>
+        <a href="#" class="project-link">Voir le projet</a>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
 
-      <!-- ┌──────────────────────────────────────────────┐
-           │ PROJET SCOLAIRE : Course VS Natation         │
-           └──────────────────────────────────────────────┘ -->
-      <div class="card reveal project" data-cat="scolaire" data-status="Terminé · 2ⁿᵈᵉ, 2023-2024">
+      <div class="card reveal project" data-cat="scolaire" data-level="seconde" data-status="Terminé · 2ⁿᵈᵉ, 2023-2024">
+        <img class="project-thumb" src="images/natation-miniature.jpg" alt="Capture du site Course VS Natation" loading="lazy" style="object-fit:cover;object-position:top;background:#fff">
         <div class="project-top">
           <div>
             <h3>Course VS Natation</h3>
@@ -1211,7 +1266,47 @@
       <!-- ┌──────────────────────────────────────────────┐
            │ PROJET PROFESSIONNEL : Game of Arkadia       │
            └──────────────────────────────────────────────┘ -->
-      <div class="card reveal project" data-cat="pro" style="transition-delay:.05s" data-status="Terminé · sept. 2025 → mars 2026">
+      
+    </div>
+  </section>
+  <section id="synthese">
+    <div class="section-head reveal" style="--zone:var(--leaf)">
+      <div class="level-flag" style="--zone:var(--leaf)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow-txt" style="color:var(--leaf)">Bloc 1</div>
+        <h2>Tableau de synthèse des compétences</h2>
+      </div>
+    </div>
+    <p class="skills-intro reveal">Ce tableau récapitule les compétences du bloc « Support et mise à disposition de services informatiques » mobilisées par chaque réalisation. Il sera complété au fil de la formation.</p>
+    <div class="table-wrap reveal"><table class="synth">
+      <thead><tr><th>Compétence du Bloc 1</th><th>Portfolio B1.6</th><th>MediaTek 86</th></tr></thead>
+      <tbody><tr><th scope="row">Gérer le patrimoine informatique</th><td>—</td><td>—</td></tr><tr><th scope="row">Répondre aux incidents et aux demandes d'assistance et d'évolution</th><td>—</td><td>—</td></tr><tr><th scope="row">Travailler en mode projet</th><td>—</td><td>🎯</td></tr><tr><th scope="row">Mettre à disposition des utilisateurs un service informatique</th><td>—</td><td>🎯</td></tr><tr><th scope="row">Organiser son développement professionnel</th><td>✅</td><td>—</td></tr></tbody>
+    </table></div>
+    <p class="synth-legend">✅ mobilisée · 🎯 visée (projet à venir) · — pas encore couverte</p>
+  </section>
+  <p class="switch"><a href="#game" class="btn btn-ghost">Voir mon portfolio Game & Level Design →</a></p>
+</div>
+<div class="view" id="view-game" data-view="game" hidden>
+  <div class="view-top">
+    <a href="#home" class="back-link">← Retour à l'accueil</a>
+    <h2>Portfolio Game & Level Design</h2>
+    <p>Mes projets de serveurs, de jeux, de donjons et de quêtes, et mes objectifs de formation.</p>
+  </div>
+  <section id="projets">
+    <div class="section-head reveal" style="--zone:var(--leaf)">
+      <div class="level-flag" style="--zone:var(--leaf)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow-txt" style="color:var(--leaf)">Portfolio</div>
+        <h2>Projets de Game & Level Design</h2>
+      </div>
+    </div>
+    <div class="projects">
+<div class="card reveal project" data-cat="pro" style="transition-delay:.05s" data-status="Terminé · sept. 2025 → mars 2026">
+        <img class="project-thumb" src="images/arkadia-miniature.jpg" alt="Logo du serveur Arkadia" loading="lazy" style="object-fit:contain;object-position:center;background:#0b1220">
         <div class="project-top">
           <div>
             <h3>Game of Arkadia</h3>
@@ -1256,6 +1351,7 @@
            │ PROJET PERSONNEL 1 : Infect D.A.X            │
            └──────────────────────────────────────────────┘ -->
       <div class="card reveal project" data-cat="perso" style="transition-delay:.1s" data-status="Prototype · BAUDO'S Jam 2025">
+        <img class="project-thumb" src="images/baubot-miniature.jpg" alt="Capture du jeu An BauBot Adventure" loading="lazy" style="object-fit:cover;object-position:50% 52%;background:#0b1220">
         <div class="project-top">
           <div>
             <h3>An BauBot Adventure : Infect D.A.X</h3>
@@ -1300,6 +1396,7 @@
            │ PROJET PERSONNEL 2 : Hydere                  │
            └──────────────────────────────────────────────┘ -->
       <div class="card reveal project" data-cat="perso" style="transition-delay:.15s" data-status="V2 · Projet fondé en 2021">
+        <img class="project-thumb" src="images/hydere-miniature.jpg" alt="Logo du serveur Hydere" loading="lazy" style="object-fit:contain;object-position:center;background:#ffffff">
         <div class="project-top">
           <div>
             <h3>Hydere</h3>
@@ -1361,6 +1458,7 @@
            │ accord écrit de l'équipe Orialis.             │
            └──────────────────────────────────────────────┘ -->
       <div class="card reveal project" data-cat="pro" style="transition-delay:.1s" data-status="En cours · Sous confidentialité (NDA)">
+        <img class="project-thumb" src="images/orialis-miniature.png" alt="Logo du serveur Orialis" loading="lazy" style="object-fit:contain;object-position:center;background:#f3f5ee">
         <div class="project-top">
           <div>
             <h3>Orialis</h3>
@@ -1414,53 +1512,50 @@
       </div>
 
 
-      <!-- ╔══════════════════════════════════════════════════════════╗
-           ║ CADRES "RIEN ICI POUR L'INSTANT" (1 par catégorie)       ║
-           ║                                                          ║
-           ║ Chaque cadre est caché par défaut. Le JavaScript          ║
-           ║ l'affiche UNIQUEMENT si sa catégorie ne contient aucun   ║
-           ║ projet (et que cette catégorie est sélectionnée).        ║
-           ║ → data-empty="..." doit correspondre au data-cat des     ║
-           ║   projets. Tu peux modifier le titre et le texte.        ║
-           ╚══════════════════════════════════════════════════════════╝ -->
-
-      <!-- ┌────────────────────────────────────────┐
-           │ CADRE VIDE : Projets scolaires         │
-           └────────────────────────────────────────┘ -->
-      <div class="empty-state" data-empty="scolaire">
-        <div class="empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7fae6f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-        <h3>Rien ici pour l'instant</h3>
-        <p>Je n'ai pas encore de projet scolaire à présenter. Je les ajoute au fur et à mesure de ma formation !</p>
-      </div>
-
-      <!-- ┌────────────────────────────────────────┐
-           │ CADRE VIDE : Projets professionnels    │
-           └────────────────────────────────────────┘ -->
-      <div class="empty-state" data-empty="pro">
-        <div class="empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7fae6f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-        <h3>Rien ici pour l'instant</h3>
-        <p>Je n'ai pas encore de projet professionnel à présenter. Ils arriveront avec mes premiers stages !</p>
-      </div>
-
-      <!-- ┌────────────────────────────────────────┐
-           │ CADRE VIDE : Projets personnels        │
-           └────────────────────────────────────────┘ -->
-      <div class="empty-state" data-empty="perso">
-        <div class="empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7fae6f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-        <h3>Rien ici pour l'instant</h3>
-        <p>Je n'ai pas encore de projet personnel à présenter. Reviens bientôt !</p>
-      </div>
-
-
+      
     </div>
   </section>
-  <!-- ═════════ FIN SECTION PROJETS ═════════ -->
+  <section id="competences-game">
+    <div class="section-head reveal" style="--zone:var(--accent)">
+      <div class="level-flag" style="--zone:var(--accent)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><path d="M14 2 4 14h6l-1 8 11-13h-6l1-7z"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow-txt" style="color:var(--accent)">Boîte à outils</div>
+        <h2>Outils de Game Design</h2>
+      </div>
+    </div>
+    <div class="skills-wrap">
+    <div class="skill-cat">
+      <div class="skill-cat-head"><h3>Création de jeux & design</h3><span>Mes outils de game design</span></div>
+      <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#478cbf;color:#fff">Gd</span><span class="tname">Godot</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#4f8a3c;color:#fff">WP</span><span class="tname">WorldPainter</span></div><div class="skill-tile reveal" style="transition-delay:0.1s"><span class="logo" style="background:#1e88e5;color:#fff">BB</span><span class="tname">BlockBench</span></div><div class="skill-tile reveal" style="transition-delay:0.15s"><span class="logo" style="background:#7d2ae8;color:#fff">Cv</span><span class="tname">Canva</span></div><div class="skill-tile reveal" style="transition-delay:0.2s"><span class="logo" style="background:#222;color:#fff">CC</span><span class="tname">CapCut</span></div></div>
+    </div>
+    </div>
+  </section>
+  <section id="objectifs">
+    <div class="section-head reveal" style="--zone:var(--sky)">
+      <div class="level-flag" style="--zone:var(--sky)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#101b15" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow-txt" style="color:var(--sky)">Où je veux aller</div>
+        <h2>Objectifs de formation</h2>
+      </div>
+    </div>
+    <div class="certif-list">
+      <div class="card reveal certif" style="transition-delay:.1s">
+        <div><div class="name">RNCP Niveau 6 (Bac+3/4) – Concepteur de jeux vidéo / Game Designer</div><div class="issuer">Game Designer & concepteur de jeu professionnel</div></div>
+        <div class="certif-status pending">Objectif</div>
+      </div>
+      <div class="card reveal certif" style="transition-delay:.15s">
+        <div><div class="name">RNCP Niveau 7 (Bac+5) – Lead Game Designer</div><div class="issuer">Axée sur la direction créative, la veille technologique et la gestion d'équipe de conception</div></div>
+        <div class="certif-status pending">Objectif</div>
+      </div>
+    </div>
+  </section>
+  <p class="switch"><a href="#sio" class="btn btn-ghost">Voir mon portfolio BTS SIO →</a></p>
+</div>
 
-
-  <!-- ═════════════════════════════════════════════════════════════════
-       SECTION 6 : CONTACT
-       Ton email et ton LinkedIn
-       ═════════════════════════════════════════════════════════════════ -->
   <section id="contact">
 
     <!-- ─── En-tête de la section ─── -->
@@ -1563,19 +1658,7 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     H. CURSEUR PERSONNALISÉ
-        Deux éléments qui suivent la souris (piloté par le JavaScript)
-     ═══════════════════════════════════════════════════════════════════ -->
-<div id="cursor-ring" aria-hidden="true"></div>
-<!-- Points de traînée (6, générés une seule fois, réutilisés en boucle) -->
-<div class="cursor-trail" data-trail="0" aria-hidden="true"></div>
-<div class="cursor-trail" data-trail="1" aria-hidden="true"></div>
-<div class="cursor-trail" data-trail="2" aria-hidden="true"></div>
-<div class="cursor-trail" data-trail="3" aria-hidden="true"></div>
-<div class="cursor-trail" data-trail="4" aria-hidden="true"></div>
-<div class="cursor-trail" data-trail="5" aria-hidden="true"></div>
-<div id="cursor-dot" aria-hidden="true"></div>
+
 
 
 <!-- ═══════════════════════════════════════════════════════════════════
@@ -1863,71 +1946,82 @@
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('open')){ closeModal(); } });
 
 
-  /* ─────────────────────────────────────────────
-     6) CURSEUR PERSONNALISÉ
-        - Actif seulement avec une vraie souris (pas tactile)
-        - Désactivé si l'utilisateur a réduit les animations
-        - Le point suit la souris, le carré suit avec un léger retard
-        - Le carré grossit sur les éléments cliquables
-     ───────────────────────────────────────────── */
-  var canHover = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
-  if(canHover && !reduced){
-    var dot = document.getElementById('cursor-dot');
-    var ring = document.getElementById('cursor-ring');
-    var trailDots = document.querySelectorAll('.cursor-trail');
-    var mx = 0, my = 0, rx = 0, ry = 0, started = false;
-    // Historique des positions récentes de la souris, pour dessiner la traînée
-    var history = [];
-    var HISTORY_LENGTH = 90;   // nombre de positions mémorisées (≈ 1,5s à 60fps)
-    document.body.classList.add('has-cursor');
-
-    document.addEventListener('mousemove', function(e){
-      mx = e.clientX; my = e.clientY;
-      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
-      if(!started){ rx = mx; ry = my; started = true; document.body.classList.add('cursor-on'); }
-    });
-    // Le curseur disparaît quand la souris quitte la fenêtre
-    document.addEventListener('mouseleave', function(){ document.body.classList.remove('cursor-on'); });
-    document.addEventListener('mouseenter', function(){ if(started){ document.body.classList.add('cursor-on'); } });
-
-    // Animation fluide du losange (rattrape le point avec un léger retard)
-    // + mise à jour de la traînée de points, à chaque image
-    function follow(){
-      rx += (mx - rx) * 0.22;
-      ry += (my - ry) * 0.22;
-      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
-
-      // On mémorise la position actuelle, puis on ne garde que les N dernières
-      history.push({x: mx, y: my});
-      if(history.length > HISTORY_LENGTH){ history.shift(); }
-
-      // Chaque point de traînée reprend une position un peu plus ancienne que le précédent,
-      // et devient de plus en plus petit / transparent en s'éloignant du curseur
-      trailDots.forEach(function(el, i){
-        var back = (i + 1) * 12;                       // écart entre chaque point (en nombre de positions)
-        var idx = history.length - 1 - back;
-        var p = history[idx < 0 ? 0 : idx];
-        if(!p) return;
-        var fade = 1 - (i + 1) / (trailDots.length + 1); // 1 = proche du curseur, 0 = loin
-        el.style.transform = 'translate(' + p.x + 'px,' + p.y + 'px) scale(' + (0.35 + fade * 0.65) + ')';
-        el.style.opacity = (fade * 0.55).toFixed(2);
-      });
-
-      requestAnimationFrame(follow);
-    }
-    follow();
-
-    // Le losange grossit sur les éléments cliquables
-    var clickable = 'a, button, .project, .filter-btn, .card.tool';
-    document.addEventListener('mouseover', function(e){
-      ring.classList.toggle('hover', !!e.target.closest(clickable));
-    });
-    // Effet "appui" au clic
-    document.addEventListener('mousedown', function(){ ring.classList.add('down'); });
-    document.addEventListener('mouseup', function(){ ring.classList.remove('down'); });
-  }
+  
 
 })();
+
+  /* ── Navigation entre les 3 vues : accueil / SIO / Game Design ── */
+  (function(){
+    var views = document.querySelectorAll('.view');
+    function route(first){
+      var h = location.hash.replace('#','');
+      if(h === 'sio' || h === 'game' || h === 'home' || h === '' ){
+        var v = (h === 'sio' || h === 'game') ? h : 'home';
+        views.forEach(function(el){ el.hidden = (el.dataset.view !== v); });
+        var hero = document.getElementById('top'); if(hero){ hero.hidden = (v !== 'home'); }
+        if(!first || h){ window.scrollTo(0,0); }
+      } else if(first && h !== 'contact' && h !== 'doors'){
+        views.forEach(function(el){ el.hidden = (el.dataset.view !== 'home'); });
+      }
+    }
+    window.addEventListener('hashchange', function(){ route(false); });
+    route(true);
+  })();
+
+  /* ── Filtre des projets scolaires par niveau (BTS SIO / seconde) ── */
+  (function(){
+    var btns = document.querySelectorAll('.level-btn');
+    var cards = document.querySelectorAll('#projets-sio .project');
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        btns.forEach(function(x){ x.classList.toggle('active', x === b); });
+        var l = b.dataset.level;
+        cards.forEach(function(c){ c.classList.toggle('level-hidden', l !== 'all' && c.dataset.level !== l); });
+      });
+    });
+  })();
+
+  /* ── Effet au clic : petite explosion de pixels (dorée, verte sur les éléments cliquables) ── */
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    if(reduce || !fine) return;
+    var clickable = 'a, button, summary, .project, .filter-btn, .level-btn, .door, .card.tool';
+
+    function piece(x, y, size, color){
+      var p = document.createElement('span');
+      p.setAttribute('aria-hidden', 'true');
+      p.style.cssText = 'position:fixed;pointer-events:none;z-index:9999;left:' + (x - size/2) + 'px;top:' + (y - size/2) + 'px;width:' + size + 'px;height:' + size + 'px;background:' + color + ';';
+      document.body.appendChild(p);
+      return p;
+    }
+    function play(el, keyframes, ms){
+      var a = el.animate(keyframes, { duration: ms, easing: 'steps(5, end)', fill: 'forwards' });
+      a.onfinish = function(){ el.remove(); };
+    }
+    function burst(x, y, main, light){
+      var n = 8, i;
+      for(i = 0; i < n; i++){
+        var big = (i % 2 === 0);
+        var p = piece(x, y, big ? 6 : 4, big ? main : light);
+        var ang = (Math.PI * 2 * i / n) + Math.random() * 0.35;
+        var dist = 20 + Math.random() * 18;
+        play(p, [
+          { transform: 'translate(0,0) scale(1)', opacity: 1 },
+          { transform: 'translate(' + Math.cos(ang) * dist + 'px,' + Math.sin(ang) * dist + 'px) scale(.4)', opacity: 0 }
+        ], 420);
+      }
+      // carré qui s'agrandit, en pas "pixel"
+      var r = piece(x, y, 10, 'transparent');
+      r.style.border = '2px solid ' + main; r.style.boxSizing = 'border-box';
+      play(r, [{ transform: 'scale(1)', opacity: 1 }, { transform: 'scale(3.4)', opacity: 0 }], 380);
+    }
+    document.addEventListener('pointerdown', function(e){
+      if((e.pointerType && e.pointerType !== 'mouse') || e.button !== 0) return;
+      var green = !!(e.target.closest && e.target.closest(clickable));
+      burst(e.clientX, e.clientY, green ? '#7fae6f' : '#e0a839', green ? '#bfe0b0' : '#f6d98a');
+    });
+  })();
 </script>
 <!-- ═════════════════ FIN DU JAVASCRIPT ═════════════════ -->
 
