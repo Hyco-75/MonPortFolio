@@ -186,7 +186,7 @@
     transition: background .15s ease, color .15s ease, transform .1s ease;
   }
   .nav-links > li > a:hover, .nav-links > li > a:focus-visible{ color:var(--accent); background: rgba(224,168,57,0.1); transform: translateY(-1px); }
-  @media (max-width:760px){ .nav-links{ display:none; } }   /* menu caché sur mobile */
+
 
   /* Sous-menu déroulant (Projets) */
   .has-sub{ position:relative; }
@@ -435,7 +435,8 @@
   .level-btn.active{ background:var(--accent); border-color:var(--accent-dark); color:var(--bg-deep); }
   .level-hidden{ display:none !important; }
   .table-wrap{ overflow-x:auto; }
-  .synth{ border-collapse:collapse; width:100%; min-width:520px; }
+  .synth{ border-collapse:collapse; width:100%; min-width:820px; }
+  .synth thead th{ font-size:13px; }
   .synth th, .synth td{ border:1px solid rgba(224,168,57,0.3); padding:11px 14px; text-align:left; font-size:14.5px; }
   .synth thead th{ background:rgba(224,168,57,0.14); color:var(--accent); }
   .synth tbody th{ font-weight:600; color:var(--text); }
@@ -453,6 +454,33 @@
     html, body{ cursor:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2224%22%20height=%2232%22%20viewBox=%220%200%2012%2016%22%20shape-rendering=%22crispEdges%22%3E%3Crect%20x=%220%22%20y=%220%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%221%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%221%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%222%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%222%22%20width=%221%22%20height=%221%22%20fill=%22%23f6d98a%22/%3E%3Crect%20x=%222%22%20y=%222%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%227%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%227%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%228%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%227%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%228%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%229%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%224%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%227%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%228%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%229%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%2210%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%223%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%224%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%225%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%222%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%224%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%227%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%224%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%226%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%227%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%226%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%227%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23e0a839%22/%3E%3Crect%20x=%228%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2215%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%226%22%20y=%2215%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%227%22%20y=%2215%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3C/svg%3E") 0 0, auto; }
     a, button, summary, .project, .filter-btn, .level-btn, .door, .card.tool{ cursor:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2224%22%20height=%2232%22%20viewBox=%220%200%2012%2016%22%20shape-rendering=%22crispEdges%22%3E%3Crect%20x=%220%22%20y=%220%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%221%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%221%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%222%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%222%22%20width=%221%22%20height=%221%22%20fill=%22%23bfe0b0%22/%3E%3Crect%20x=%222%22%20y=%222%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%223%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%224%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%225%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%226%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%227%22%20y=%227%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%227%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%228%22%20y=%228%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%227%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%228%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%229%22%20y=%229%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%224%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%227%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%228%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%229%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%2210%22%20y=%2210%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%223%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%224%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%225%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%2211%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%222%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%224%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%227%22%20y=%2212%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%221%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%224%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%226%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%227%22%20y=%2213%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%220%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%226%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%227%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%237fae6f%22/%3E%3Crect%20x=%228%22%20y=%2214%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%225%22%20y=%2215%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%226%22%20y=%2215%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3Crect%20x=%227%22%20y=%2215%22%20width=%221%22%20height=%221%22%20fill=%22%23101b15%22/%3E%3C/svg%3E") 0 0, pointer; }
     input, textarea{ cursor:text; }
+  }
+  /* ── Navigation mobile : menu compact, sous-menu de sections, retour en haut ── */
+  .nav-links .short{ display:none; }
+  .subnav{ display:none; }
+  #totop{ display:none; }
+  details.skill-cat > summary{ list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  details.skill-cat > summary::-webkit-details-marker{ display:none; }
+  details.skill-cat > summary::after{ content:'▾'; color:var(--accent); font-size:20px; transition:transform .2s; }
+  details.skill-cat:not([open]) > summary::after{ transform:rotate(-90deg); }
+  details.skill-cat:not([open]) .skill-cat-head{ margin-bottom:0; }
+  section[id]{ scroll-margin-top:70px; }
+  @media (max-width:760px){
+    .nav-inner{ padding:9px 12px; gap:6px; }
+    .logo-name{ display:none; }
+    .nav-links{ display:flex; gap:0; font-size:13px; }
+    .nav-links > li > a{ padding:7px 8px; }
+    .nav-links .full{ display:none; }
+    .subnav{ display:flex; gap:8px; overflow-x:auto; position:sticky; top:56px; z-index:40; padding:10px 0; scrollbar-width:none;
+      background:rgba(16,27,21,0.96); }
+    .subnav::-webkit-scrollbar{ display:none; }
+    .subnav a{ flex:0 0 auto; padding:7px 14px; border:2px solid var(--border); border-radius:20px; background:var(--bg-deep);
+      font-family:'Baloo 2',sans-serif; font-weight:700; font-size:13px; color:var(--text-muted); text-decoration:none; }
+    section[id]{ scroll-margin-top:120px; }
+    #totop{ position:fixed; right:14px; bottom:16px; z-index:60; width:44px; height:44px; border-radius:12px; border:2px solid var(--accent-dark);
+      background:var(--accent); color:var(--bg-deep); font-size:20px; font-weight:700; cursor:pointer; box-shadow:var(--pixel-shadow);
+      opacity:0; pointer-events:none; transition:opacity .2s; display:block; }
+    #totop.show{ opacity:1; pointer-events:auto; }
   }
   .skill-row{ margin-bottom:20px; }
   .skill-row:last-child{ margin-bottom:0; }
@@ -812,8 +840,8 @@
     <!-- ─── Liste des liens du menu ─── -->
     <ul class="nav-links">
       <li><a href="#home">Accueil</a></li>
-      <li><a href="#sio">Portfolio SIO</a></li>
-      <li><a href="#game">Portfolio GameDesign</a></li>
+      <li><a href="#sio"><span class="full">Portfolio </span>SIO</a></li>
+      <li><a href="#game"><span class="full">Portfolio </span>GameDesign</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -988,6 +1016,7 @@
     <h2>Portfolio BTS SIO · option SLAM</h2>
     <p>Mon parcours, mes compétences et tous mes projets scolaires, à filtrer par niveau.</p>
   </div>
+  <div class="subnav" aria-label="Aller à une section"><a href="#parcours">Parcours</a><a href="#competences">Compétences</a><a href="#certifications">Certifications</a><a href="#veille">Veille</a><a href="#projets-sio">Projets</a><a href="#synthese">Synthèse</a></div>
   <section id="parcours">
 
     <!-- ─── En-tête de la section ─── -->
@@ -1066,30 +1095,30 @@
     </div>
     <p class="skills-intro reveal">Compétences abordées au cours du BTS SIO option SLAM, classées par catégorie. Les logos sont des pastilles aux couleurs de chaque technologie.</p>
     <div class="skills-wrap">
-    <div class="skill-cat">
-      <div class="skill-cat-head"><h3>Développement d'applications</h3><span>Langages et environnements</span></div>
+    <details class="skill-cat" open>
+      <summary class="skill-cat-head"><div><h3>Développement d'applications</h3><span>Langages et environnements</span></div></summary>
       <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#3776ab;color:#fff">Py</span><span class="tname">Python</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#777bb3;color:#fff">PHP</span><span class="tname">PHP</span></div><div class="skill-tile reveal" style="transition-delay:0.1s"><span class="logo" style="background:#e76f00;color:#fff">Jv</span><span class="tname">Java</span></div><div class="skill-tile reveal" style="transition-delay:0.15s"><span class="logo" style="background:#68217a;color:#fff">C#</span><span class="tname">C#</span></div><div class="skill-tile reveal" style="transition-delay:0.2s"><span class="logo" style="background:#007acc;color:#fff">VS</span><span class="tname">Visual Studio Code</span></div></div>
-    </div>
-    <div class="skill-cat">
-      <div class="skill-cat-head"><h3>Web</h3><span>Pages et interfaces</span></div>
+    </details>
+    <details class="skill-cat" open>
+      <summary class="skill-cat-head"><div><h3>Web</h3><span>Pages et interfaces</span></div></summary>
       <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#e44d26;color:#fff">5</span><span class="tname">HTML5</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#1572b6;color:#fff">3</span><span class="tname">CSS3</span></div><div class="skill-tile reveal" style="transition-delay:0.1s"><span class="logo" style="background:#f7df1e;color:#222">JS</span><span class="tname">JavaScript</span></div></div>
-    </div>
-    <div class="skill-cat">
-      <div class="skill-cat-head"><h3>Bases de données</h3><span>Stockage et requêtes</span></div>
+    </details>
+    <details class="skill-cat" open>
+      <summary class="skill-cat-head"><div><h3>Bases de données</h3><span>Stockage et requêtes</span></div></summary>
       <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#336791;color:#fff">SQL</span><span class="tname">SQL</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#00758f;color:#fff">My</span><span class="tname">MySQL</span></div><div class="skill-tile reveal" style="transition-delay:0.1s"><span class="logo" style="background:#6b7a3d;color:#fff">UML</span><span class="tname">Modélisation (UML, MCD)</span></div></div>
-    </div>
-    <div class="skill-cat">
-      <div class="skill-cat-head"><h3>Outils & méthodes</h3><span>Travail en équipe</span></div>
+    </details>
+    <details class="skill-cat" open>
+      <summary class="skill-cat-head"><div><h3>Outils & méthodes</h3><span>Travail en équipe</span></div></summary>
       <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#f05032;color:#fff">Git</span><span class="tname">Git</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#24292e;color:#fff">GH</span><span class="tname">GitHub</span></div><div class="skill-tile reveal" style="transition-delay:0.1s"><span class="logo" style="background:#2e8b57;color:#fff">Ag</span><span class="tname">Méthode Agile</span></div><div class="skill-tile reveal" style="transition-delay:0.15s"><span class="logo" style="background:#111;color:#fff">No</span><span class="tname">Notion</span></div></div>
-    </div>
-    <div class="skill-cat">
-      <div class="skill-cat-head"><h3>Systèmes & réseaux</h3><span>Support et services (Bloc 1)</span></div>
+    </details>
+    <details class="skill-cat" open>
+      <summary class="skill-cat-head"><div><h3>Systèmes & réseaux</h3><span>Support et services (Bloc 1)</span></div></summary>
       <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#0078d4;color:#fff">Win</span><span class="tname">Windows</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#222;color:#f5c518">Lx</span><span class="tname">Linux</span></div><div class="skill-tile reveal" style="transition-delay:0.1s"><span class="logo" style="background:#4a6fa5;color:#fff">IP</span><span class="tname">Réseaux TCP/IP</span></div></div>
-    </div>
-    <div class="skill-cat">
-      <div class="skill-cat-head"><h3>Cybersécurité</h3><span>Sécuriser les services (Bloc 3)</span></div>
+    </details>
+    <details class="skill-cat" open>
+      <summary class="skill-cat-head"><div><h3>Cybersécurité</h3><span>Sécuriser les services (Bloc 3)</span></div></summary>
       <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#7a3b3b;color:#fff">🔒</span><span class="tname">Sécurité des applications</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#3b5a7a;color:#fff">RG</span><span class="tname">RGPD</span></div></div>
-    </div>
+    </details>
     
     </div>
   </section>
@@ -1222,6 +1251,202 @@
         <span class="click-hint">Cliquer pour plus de détails</span>
       </div>
 
+      <div class="card reveal project" data-cat="scolaire" data-level="bts" data-status="Objectif · Prévu en 2026">
+        <div class="project-top">
+          <div>
+            <h3>Contacts</h3>
+            <div class="engine">C# · Application de bureau · BTS SIO SLAM</div>
+          </div>
+          <span class="cat-tag scolaire">Objectif</span>
+        </div>
+        <p class="desc">Projet à venir : application de bureau en C# pour mémoriser des contacts personnels et professionnels, avec sauvegarde des données par sérialisation et gestion dynamique des couleurs dans la liste.</p>
+        <div class="pills"><span class="pill">C#</span><span class="pill">Sérialisation</span></div>
+        <div class="project-details">
+          <section data-title="Statut">
+            <p>Ce projet n'est pas encore réalisé : il est prévu au programme de ma formation (2026). Cette fiche sera complétée une fois le projet terminé.</p>
+          </section>
+          <section data-title="Cadre de réalisation">
+            <p>Projet scolaire prévu au programme du BTS SIO option SLAM (CNED).</p>
+          </section>
+          <section data-title="Ce que le projet vise">
+            <ul>
+              <li>Application de bureau avec interface graphique</li>
+              <li>Sauvegarde des données par sérialisation</li>
+              <li>Couleurs dynamiques dans la liste des contacts</li>
+            </ul>
+          </section>
+        </div>
+        <a href="#" class="project-link">Voir le projet</a>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
+
+      <div class="card reveal project" data-cat="scolaire" data-level="bts" data-status="Objectif · Prévu en 2026">
+        <div class="project-top">
+          <div>
+            <h3>Nolark</h3>
+            <div class="engine">HTML/CSS/JavaScript · Site web · BTS SIO SLAM</div>
+          </div>
+          <span class="cat-tag scolaire">Objectif</span>
+        </div>
+        <p class="desc">Projet à venir : correction et évolution d'un site vitrine de présentation de casques de moto, reposant sur une base de données : respect du RGPD, déploiement et référencement.</p>
+        <div class="pills"><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><span class="pill">MySQL</span></div>
+        <div class="project-details">
+          <section data-title="Statut">
+            <p>Ce projet n'est pas encore réalisé : il est prévu au programme de ma formation (2026). Cette fiche sera complétée une fois le projet terminé.</p>
+          </section>
+          <section data-title="Cadre de réalisation">
+            <p>Projet scolaire prévu au programme du BTS SIO option SLAM (CNED).</p>
+          </section>
+          <section data-title="Ce que le projet vise">
+            <ul>
+              <li>Corriger et faire évoluer un site vitrine existant</li>
+              <li>Exploiter une base de données MySQL</li>
+              <li>Respecter le RGPD</li>
+              <li>Déployer le site et travailler son référencement</li>
+            </ul>
+          </section>
+          <section data-title="Compétences du Bloc 1 visées (à confirmer)">
+            <ul>
+              <li>Répondre aux incidents et aux demandes d'assistance et d'évolution (évolution d'un site, référencement)</li>
+              <li>Mettre à disposition des utilisateurs un service informatique (déploiement)</li>
+            </ul>
+          </section>
+        </div>
+        <a href="#" class="project-link">Voir le projet</a>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
+
+      <div class="card reveal project" data-cat="scolaire" data-level="bts" data-status="Objectif · Prévu en 2026">
+        <div class="project-top">
+          <div>
+            <h3>Le site de mon client</h3>
+            <div class="engine">WordPress · Site e-commerce · BTS SIO SLAM</div>
+          </div>
+          <span class="cat-tag scolaire">Objectif</span>
+        </div>
+        <p class="desc">Projet à venir : découverte de WordPress en créant les bases d'un site e-commerce.</p>
+        <div class="pills"><span class="pill">WordPress</span><span class="pill">MySQL</span><span class="pill">WooCommerce</span></div>
+        <div class="project-details">
+          <section data-title="Statut">
+            <p>Ce projet n'est pas encore réalisé : il est prévu au programme de ma formation (2026). Cette fiche sera complétée une fois le projet terminé.</p>
+          </section>
+          <section data-title="Cadre de réalisation">
+            <p>Projet scolaire prévu au programme du BTS SIO option SLAM (CNED).</p>
+          </section>
+          <section data-title="Ce que le projet vise">
+            <ul>
+              <li>Découvrir WordPress</li>
+              <li>Créer les bases d'un site e-commerce avec WooCommerce</li>
+            </ul>
+          </section>
+          <section data-title="Compétences du Bloc 1 visées (à confirmer)">
+            <ul>
+              <li>Répondre aux incidents et aux demandes d'assistance et d'évolution (développer la présence en ligne de l'organisation)</li>
+            </ul>
+          </section>
+        </div>
+        <a href="#" class="project-link">Voir le projet</a>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
+
+      <div class="card reveal project" data-cat="scolaire" data-level="bts" data-status="Objectif · Prévu en 2026">
+        <div class="project-top">
+          <div>
+            <h3>Centre de formation informatique</h3>
+            <div class="engine">WordPress · Site web · BTS SIO SLAM</div>
+          </div>
+          <span class="cat-tag scolaire">Objectif</span>
+        </div>
+        <p class="desc">Projet à venir : évolution d'un site vitrine de présentation d'un centre de formation : CGU, formulaire de contact, droit à la portabilité, liste de diffusion, campagne d'emailing, référencement et suivi de la visibilité du site.</p>
+        <div class="pills"><span class="pill">WordPress</span><span class="pill">MySQL</span></div>
+        <div class="project-details">
+          <section data-title="Statut">
+            <p>Ce projet n'est pas encore réalisé : il est prévu au programme de ma formation (2026). Cette fiche sera complétée une fois le projet terminé.</p>
+          </section>
+          <section data-title="Cadre de réalisation">
+            <p>Projet scolaire prévu au programme du BTS SIO option SLAM (CNED).</p>
+          </section>
+          <section data-title="Ce que le projet vise">
+            <ul>
+              <li>Ajouter les CGU et un formulaire de contact</li>
+              <li>Mettre en place le droit à la portabilité et une liste de diffusion</li>
+              <li>Lancer une campagne d'emailing</li>
+              <li>Travailler le référencement et suivre la visibilité du site</li>
+            </ul>
+          </section>
+          <section data-title="Compétences du Bloc 1 visées (à confirmer)">
+            <ul>
+              <li>Répondre aux incidents et aux demandes d'assistance et d'évolution (référencer les services en ligne et mesurer leur visibilité, participer à l'évolution d'un site web)</li>
+            </ul>
+          </section>
+        </div>
+        <a href="#" class="project-link">Voir le projet</a>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
+
+      <div class="card reveal project" data-cat="scolaire" data-level="bts" data-status="Objectif · Prévu en 2027">
+        <div class="project-top">
+          <div>
+            <h3>Jeu de combat 2D</h3>
+            <div class="engine">Java · Jeu multijoueur · BTS SIO SLAM</div>
+          </div>
+          <span class="cat-tag scolaire">Objectif</span>
+        </div>
+        <p class="desc">Projet à venir : jeu 2D multijoueur en Java où plusieurs joueurs s'affrontent. Les attaques, comme le tir d'une boule de feu, sont gérées dans un thread indépendant.</p>
+        <div class="pills"><span class="pill">Java</span><span class="pill">Thread</span><span class="pill">Socket</span><span class="pill">MVC</span></div>
+        <div class="project-details">
+          <section data-title="Statut">
+            <p>Ce projet n'est pas encore réalisé : il est prévu au programme de ma formation (2027). Cette fiche sera complétée une fois le projet terminé.</p>
+          </section>
+          <section data-title="Cadre de réalisation">
+            <p>Projet scolaire prévu au programme du BTS SIO option SLAM (CNED).</p>
+          </section>
+          <section data-title="Ce que le projet vise">
+            <ul>
+              <li>Jeu 2D multijoueur en réseau (sockets)</li>
+              <li>Gestion des attaques dans un thread indépendant</li>
+              <li>Architecture MVC</li>
+            </ul>
+          </section>
+        </div>
+        <a href="#" class="project-link">Voir le projet</a>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
+
+      <div class="card reveal project" data-cat="scolaire" data-level="bts" data-status="Objectif · Prévu en 2027">
+        <div class="project-top">
+          <div>
+            <h3>Habilitations</h3>
+            <div class="engine">C# · Application de bureau · BTS SIO SLAM</div>
+          </div>
+          <span class="cat-tag scolaire">Objectif</span>
+        </div>
+        <p class="desc">Projet à venir : application de bureau en C# pour gérer l'attribution d'habilitations aux ressources pour les développeurs d'une entreprise, avec accès authentifié et structure MVC.</p>
+        <div class="pills"><span class="pill">C#</span><span class="pill">MySQL</span></div>
+        <div class="project-details">
+          <section data-title="Statut">
+            <p>Ce projet n'est pas encore réalisé : il est prévu au programme de ma formation (2027). Cette fiche sera complétée une fois le projet terminé.</p>
+          </section>
+          <section data-title="Cadre de réalisation">
+            <p>Projet scolaire prévu au programme du BTS SIO option SLAM (CNED).</p>
+          </section>
+          <section data-title="Ce que le projet vise">
+            <ul>
+              <li>Gérer l'attribution d'habilitations aux ressources</li>
+              <li>Accès authentifié à l'application</li>
+              <li>Architecture MVC</li>
+            </ul>
+          </section>
+          <section data-title="Compétences du Bloc 1 visées (à confirmer)">
+            <ul>
+              <li>Gérer le patrimoine informatique (mettre en place et vérifier les niveaux d'habilitation associés à un service)</li>
+            </ul>
+          </section>
+        </div>
+        <a href="#" class="project-link">Voir le projet</a>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
+
       <div class="card reveal project" data-cat="scolaire" data-level="seconde" data-status="Terminé · 2ⁿᵈᵉ, 2023-2024">
         <img class="project-thumb" src="images/natation-miniature.jpg" alt="Capture du site Course VS Natation" loading="lazy" style="object-fit:cover;object-position:top;background:#fff">
         <div class="project-top">
@@ -1281,10 +1506,10 @@
     </div>
     <p class="skills-intro reveal">Ce tableau récapitule les compétences du bloc « Support et mise à disposition de services informatiques » mobilisées par chaque réalisation. Il sera complété au fil de la formation.</p>
     <div class="table-wrap reveal"><table class="synth">
-      <thead><tr><th>Compétence du Bloc 1</th><th>Portfolio B1.6</th><th>MediaTek 86</th></tr></thead>
-      <tbody><tr><th scope="row">Gérer le patrimoine informatique</th><td>—</td><td>—</td></tr><tr><th scope="row">Répondre aux incidents et aux demandes d'assistance et d'évolution</th><td>—</td><td>—</td></tr><tr><th scope="row">Travailler en mode projet</th><td>—</td><td>🎯</td></tr><tr><th scope="row">Mettre à disposition des utilisateurs un service informatique</th><td>—</td><td>🎯</td></tr><tr><th scope="row">Organiser son développement professionnel</th><td>✅</td><td>—</td></tr></tbody>
+      <thead><tr><th>Compétence du Bloc 1</th><th>Portfolio B1.6</th><th>MediaTek 86</th><th>Nolark</th><th>Site de mon client</th><th>Centre de formation</th><th>Habilitations</th></tr></thead>
+      <tbody><tr><th scope="row">Gérer le patrimoine informatique</th><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>🎯</td></tr><tr><th scope="row">Répondre aux incidents et aux demandes d'assistance et d'évolution</th><td>—</td><td>—</td><td>🎯</td><td>🎯</td><td>🎯</td><td>—</td></tr><tr><th scope="row">Travailler en mode projet</th><td>—</td><td>🎯</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><th scope="row">Mettre à disposition des utilisateurs un service informatique</th><td>—</td><td>🎯</td><td>🎯</td><td>—</td><td>—</td><td>—</td></tr><tr><th scope="row">Organiser son développement professionnel</th><td>✅</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr></tbody>
     </table></div>
-    <p class="synth-legend">✅ mobilisée · 🎯 visée (projet à venir) · — pas encore couverte</p>
+    <p class="synth-legend">✅ mobilisée · 🎯 visée (projet à venir, à confirmer) · — pas encore couverte. Les projets Contacts et Jeu de combat 2D relèvent surtout du développement et ne figurent pas dans ce tableau.</p>
   </section>
   <p class="switch"><a href="#game" class="btn btn-ghost">Voir mon portfolio Game & Level Design →</a></p>
 </div>
@@ -1294,6 +1519,7 @@
     <h2>Portfolio Game & Level Design</h2>
     <p>Mes projets de serveurs, de jeux, de donjons et de quêtes, et mes objectifs de formation.</p>
   </div>
+  <div class="subnav" aria-label="Aller à une section"><a href="#projets">Projets</a><a href="#competences-game">Outils</a><a href="#objectifs">Objectifs</a></div>
   <section id="projets">
     <div class="section-head reveal" style="--zone:var(--leaf)">
       <div class="level-flag" style="--zone:var(--leaf)">
@@ -1526,10 +1752,10 @@
       </div>
     </div>
     <div class="skills-wrap">
-    <div class="skill-cat">
-      <div class="skill-cat-head"><h3>Création de jeux & design</h3><span>Mes outils de game design</span></div>
+    <details class="skill-cat" open>
+      <summary class="skill-cat-head"><div><h3>Création de jeux & design</h3><span>Mes outils de game design</span></div></summary>
       <div class="skill-tiles"><div class="skill-tile reveal" style="transition-delay:0.0s"><span class="logo" style="background:#478cbf;color:#fff">Gd</span><span class="tname">Godot</span></div><div class="skill-tile reveal" style="transition-delay:0.05s"><span class="logo" style="background:#4f8a3c;color:#fff">WP</span><span class="tname">WorldPainter</span></div><div class="skill-tile reveal" style="transition-delay:0.1s"><span class="logo" style="background:#1e88e5;color:#fff">BB</span><span class="tname">BlockBench</span></div><div class="skill-tile reveal" style="transition-delay:0.15s"><span class="logo" style="background:#7d2ae8;color:#fff">Cv</span><span class="tname">Canva</span></div><div class="skill-tile reveal" style="transition-delay:0.2s"><span class="logo" style="background:#222;color:#fff">CC</span><span class="tname">CapCut</span></div></div>
-    </div>
+    </details>
     </div>
   </section>
   <section id="objectifs">
@@ -1598,7 +1824,7 @@
           <label>Nom
             <input type="text" name="name" required>
           </label>
-          <label>Email
+          <label>Votre email
             <input type="email" name="_replyto" required>
           </label>
           <label>Message
@@ -2022,9 +2248,24 @@
       burst(e.clientX, e.clientY, green ? '#7fae6f' : '#e0a839', green ? '#bfe0b0' : '#f6d98a');
     });
   })();
+
+  /* ── Mobile : catégories de compétences repliées (sauf la première) + bouton retour en haut ── */
+  (function(){
+    if(window.matchMedia('(max-width:760px)').matches){
+      document.querySelectorAll('#view-sio details.skill-cat').forEach(function(d, i){ if(i > 0){ d.removeAttribute('open'); } });
+    }
+    var upBtn = null;
+    function btn(){ return upBtn || (upBtn = document.getElementById('totop')); }
+    window.addEventListener('scroll', function(){ var b = btn(); if(b){ b.classList.toggle('show', window.scrollY > 700); } }, { passive: true });
+    document.addEventListener('click', function(e){
+      var b = btn();
+      if(b && e.target === b){ window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    });
+  })();
 </script>
 <!-- ═════════════════ FIN DU JAVASCRIPT ═════════════════ -->
 
+<button id="totop" type="button" aria-label="Retour en haut de page">↑</button>
 </body>
 </html>
 <!-- ═════════════════ FIN DU FICHIER ═════════════════ -->
