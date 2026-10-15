@@ -249,6 +249,7 @@
   .hero-grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap:56px; align-items:center; position:relative; z-index:1; }
   @media (max-width:820px){ .hero-grid{ grid-template-columns:1fr; gap:40px; } }
 
+  .hero-name{ font-family:'Baloo 2',sans-serif; font-weight:800; font-size:clamp(24px,3.4vw,34px); color:var(--accent); margin-bottom:10px; line-height:1.1; }
   /* Étiquette "Etudiant SIO SLAM" */
   .eyebrow{
     display:inline-block; color:var(--bg-deep); background:var(--sky); font-size:12.5px; font-weight:700;
@@ -484,6 +485,7 @@
   }
   .skill-tile .logo{ background:#f3f5ee; padding:5px; box-sizing:border-box; }
   .skill-tile .logo img{ display:block; width:100%; height:100%; object-fit:contain; }
+  .card-date{ display:inline-block; margin:2px 0 10px; padding:3px 10px; border-radius:6px; background:rgba(35,48,31,0.08); color:var(--ink); font-size:12.5px; font-weight:700; }
   .skill-row{ margin-bottom:20px; }
   .skill-row:last-child{ margin-bottom:0; }
   .skill-top{ display:flex; justify-content:space-between; font-size:14px; color:var(--ink); margin-bottom:8px; font-weight:700; }
@@ -886,7 +888,8 @@
     <div class="hero-copy">
 
       <!-- Étiquette bleue -->
-      <div class="eyebrow">Etudiant SIO SLAM</div>
+      <div class="hero-name">Elzo Menu</div>
+        <div class="eyebrow">Etudiant SIO SLAM</div>
 
       <!-- Sous-titre : formation actuelle en clair -->
       <div class="training-sub mono">1ʳᵉ année BTS SIO, option SLAM (CNED)</div>
@@ -1046,7 +1049,7 @@
       <div class="tstep reveal future" style="transition-delay:.16s">
         <div class="when">2027 à 2028</div>
         <h3>BTS SIO SLAM, 2ᵉ année (CNED)</h3>
-        <p>Poursuite de la formation, avec l'objectif d'orienter les projets vers le développement de jeu et la conception de niveaux.</p>
+        <p><strong>BTS Services Informatiques aux Organisations (SIO), option Solutions Logicielles et Applications Métiers (SLAM) · CNED, à distance.</strong> Poursuite de la formation, avec l'objectif d'orienter les projets vers le développement de jeu et la conception de niveaux.</p>
       </div>
 
       <!-- Étape 2 : BTS 1ère année (EN COURS)
@@ -1056,7 +1059,7 @@
       <div class="tstep reveal in-progress" style="transition-delay:.08s" data-start="2026-09-01" data-end="2027-06-30">
         <div class="when">2026 à 2027 <span class="when-progress-label"></span></div>
         <h3>BTS SIO SLAM, 1ʳᵉ année (CNED)</h3>
-        <p>Formation à distance en développement logiciel, avec un travail personnel en parallèle sur la conception de niveaux et de prototypes de jeu.</p>
+        <p><strong>BTS Services Informatiques aux Organisations (SIO), option Solutions Logicielles et Applications Métiers (SLAM) · CNED, à distance.</strong> Formation à distance en développement logiciel, avec un travail personnel en parallèle sur la conception de niveaux et de prototypes de jeu.</p>
         <div class="progress-track"><div class="progress-fill"></div></div>
       </div>
 
@@ -1204,6 +1207,7 @@
             </ul>
           </section>
         </div>
+        <a href="https://github.com/Hyco-75/MonPortFolio" target="_blank" rel="noopener" class="project-link">Code sur GitHub</a>
         <span class="click-hint">Cliquer pour plus de détails</span>
       </div>
 
@@ -1533,7 +1537,46 @@
       </div>
     </div>
     <div class="projects">
-<div class="card reveal project" data-cat="pro" style="transition-delay:.05s" data-status="Terminé · sept. 2025 → mars 2026">
+<!-- ┌──────────────────────────────────────────────┐
+      │ PROJET PERSONNEL : The Witch's Hunt          │
+      └──────────────────────────────────────────────┘ -->
+      <div class="card reveal project" data-cat="perso" data-status="Publié · GameDev.tv Halloween Jam 2026">
+        <img class="project-thumb" src="images/witchs-hunt-miniature.jpg" alt="Illustration de The Witch's Hunt" loading="lazy" style="object-fit:contain;background:#000">
+        <div class="project-top">
+          <div>
+            <h3>The Witch's Hunt</h3>
+            <div class="engine">Godot · Jeu de stratégie base defense 2D pixel art · GameDev.tv Halloween Jam 2026</div>
+          </div>
+          <span class="cat-tag perso">Personnel</span>
+        </div>
+        <p class="desc">Jeu de stratégie base defense 2D en pixel art, jouable en solo, réalisé pour la GameDev.tv Halloween Jam 2026. Le joueur incarne un sorcier qui a enfermé une sorcière dans un cercle de sel : il doit défendre sa base et recharger le cercle pour empêcher les sbires de la libérer, sous peine de Game Over. J'y ai assuré le Game Design, l'UI/UX et le Level Design.</p>
+        <div class="pills"><span class="pill">Godot</span><span class="pill">Pixel art</span><span class="pill">Game jam</span><span class="pill">Stratégie</span><span class="pill">Base defense</span><span class="pill">Game Design</span><span class="pill">UI/UX</span></div>
+        <div class="project-details">
+          <section data-title="Cadre de réalisation">
+            <p>Jeu réalisé en équipe pour la GameDev.tv Halloween Jam 2026 (programmation, pixel art, illustration, doublage) et publié sur itch.io le 12 octobre 2026, en version Windows.</p>
+          </section>
+          <section data-title="Le jeu">
+            <p>The Witch's Hunt est un jeu de stratégie base defense 2D en pixel art, qui se joue en solo. Le joueur incarne un sorcier qui a enfermé une sorcière dans un cercle de sel.</p>
+            <p>Cette sorcière permet d'améliorer la base : le cercle de sel utilise ses pouvoirs pour y parvenir, et c'est pour cette raison que le joueur doit le recharger. Si le cercle se brise ou n'est pas rechargé assez vite, c'est le Game Over.</p>
+            <p>L'objectif est donc clair : protéger sa base et le cercle de sel pour empêcher les sbires de libérer la sorcière.</p>
+          </section>
+          <section data-title="Mon rôle">
+            <ul>
+              <li>Game Design</li>
+              <li>UI/UX Design</li>
+              <li>Level Design</li>
+            </ul>
+          </section>
+          <section data-title="Trailer">
+            <a href="https://www.youtube.com/watch?v=IvpB8KybLqg" target="_blank" rel="noopener" data-youtube-card data-yt-label="Trailer de The Witch's Hunt"></a>
+          </section>
+        </div>
+        <!-- Lien vers le projet -->
+        <a href="https://hyco75.itch.io/the-witchs-hunt" target="_blank" rel="noopener" class="project-link">Voir le projet</a>
+        <span class="click-hint">Cliquer pour plus de détails</span>
+      </div>
+
+      <div class="card reveal project" data-cat="pro" style="transition-delay:.05s" data-status="Terminé · sept. 2025 → mars 2026">
         <img class="project-thumb" src="images/arkadia-miniature.jpg" alt="Logo du serveur Arkadia" loading="lazy" style="object-fit:contain;object-position:center;background:#0b1220">
         <div class="project-top">
           <div>
@@ -1696,7 +1739,7 @@
         </div>
         <p class="desc">Conception d'une mécanique de gameplay pour un serveur Minecraft MMORPG de grande envergure, au sein d'une équipe pluridisciplinaire. Le projet étant sous accord de confidentialité, le détail de la mécanique n'est pas dévoilé ici : cette fiche présente ma démarche de travail plutôt que le contenu livré.</p>
         <!-- Technologies / compétences -->
-        <div class="pills"><span class="pill">Game Design</span><span class="pill">Logique de progression</span><span class="pill">Économie interne</span><span class="pill">Documentation technique</span><span class="pill">Travail avec des développeurs</span></div>
+        <div class="pills"><span class="pill">Game Design</span><span class="pill">Logique de progression</span><span class="pill">Documentation technique</span><span class="pill">Travail avec des développeurs</span></div>
         <!-- ┌─────────────────────────────────────────────────────┐
              │ DÉTAILS DE LA FICHE (invisibles sur la page)         │
              │ Affichés dans la fenêtre qui s'ouvre au clic.        │
@@ -1718,7 +1761,7 @@
               <li><strong>Itérations avec retours structurés :</strong> 6 versions du cahier des charges, chaque retour analysé section par section et les changements tracés d'une version à l'autre</li>
               <li><strong>Schématisation ciblée :</strong> des schémas pour les mécaniques les plus denses, pensés pour être compris en quelques secondes par un profil non-spécialiste</li>
               <li><strong>Filtre "expérience joueur" :</strong> chaque mécanique évaluée sur la sensation produite, le jeu solo/social qu'elle induit, et si elle crée un vrai choix</li>
-              <li><strong>Arbitrages présentés, pas imposés :</strong> les choix hors de mon ressort (économie du serveur, etc.) formalisés en options comparées, pour que l'équipe tranche en connaissance de cause</li>
+              <li><strong>Arbitrages présentés, pas imposés :</strong> les choix hors de mon ressort formalisés en options comparées, pour que l'équipe tranche en connaissance de cause</li>
               <li><strong>Cohérence jusqu'à l'interface :</strong> même les messages système repensés (voix d'un personnage "Ordinateur de Bord") pour préserver l'immersion jusqu'au dernier détail</li>
             </ul>
           </section>
@@ -1726,7 +1769,6 @@
             <ul>
               <li>Game design</li>
               <li>Logique de progression</li>
-              <li>Économie interne</li>
               <li>Documentation technique</li>
               <li>Travail en coordination avec des développeurs</li>
             </ul>
@@ -2262,6 +2304,18 @@
     document.addEventListener('click', function(e){
       var b = btn();
       if(b && e.target === b){ window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    });
+  })();
+
+  /* ── Date de réalisation visible sur chaque carte projet (lue dans data-status) ── */
+  (function(){
+    document.querySelectorAll('.project[data-status]').forEach(function(card){
+      var top = card.querySelector('.project-top');
+      if(!top || card.querySelector('.card-date')) return;
+      var d = document.createElement('div');
+      d.className = 'card-date';
+      d.textContent = card.getAttribute('data-status');
+      top.insertAdjacentElement('afterend', d);
     });
   })();
 </script>
